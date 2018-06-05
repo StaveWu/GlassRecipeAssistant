@@ -61,6 +61,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.误差设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -96,11 +97,12 @@
             // 连接ToolStripMenuItem
             // 
             this.连接ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.串口ToolStripMenuItem});
+            this.串口ToolStripMenuItem,
+            this.误差设置ToolStripMenuItem});
             this.连接ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.10084F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.连接ToolStripMenuItem.Name = "连接ToolStripMenuItem";
             this.连接ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
-            this.连接ToolStripMenuItem.Text = "通讯";
+            this.连接ToolStripMenuItem.Text = "设置";
             // 
             // 串口ToolStripMenuItem
             // 
@@ -202,7 +204,7 @@
             // 
             // label7
             // 
-            this.label7.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(208, 45);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -384,6 +386,13 @@
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // 误差设置ToolStripMenuItem
+            // 
+            this.误差设置ToolStripMenuItem.Name = "误差设置ToolStripMenuItem";
+            this.误差设置ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
+            this.误差设置ToolStripMenuItem.Text = "误差设置";
+            this.误差设置ToolStripMenuItem.Click += new System.EventHandler(this.误差设置ToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
@@ -450,6 +459,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.ToolStripMenuItem 误差设置ToolStripMenuItem;
     }
 }
 

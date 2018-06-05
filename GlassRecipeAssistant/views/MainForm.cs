@@ -1,4 +1,5 @@
-﻿using RecipeAssistant.models;
+﻿using GlassRecipeAssistant.views;
+using RecipeAssistant.models;
 using RecipeAssistant.views;
 using System;
 using System.Collections.Generic;
@@ -140,31 +141,31 @@ namespace RecipeAssistant
                 set
                 {
                     currentQuality = value;
-                    double rate = (double)currentQuality / (double)StandardQuality;
-                    if (rate > 0 && rate < 0.9)
-                    {
-                        BackColor = Color.Yellow;
-                    }
-                    else if (rate >= 0.9 && rate <= 1.1)
-                    {// 绿色
-                        BackColor = Color.FromArgb(0, 255, 0);
-                    }
-                    else if (rate > 1.1)
-                    {// 浅红
-                        BackColor = Color.FromArgb(255, 128, 128);
-                    }
-                    else
-                    {
-                        BackColor = Color.White;
-                    }
+                    changeBackColor(Settings.ErrorThreshold);
                 }
             }
 
-        }
+            private void changeBackColor(double threshold)
+            {
+                double cha = currentQuality - StandardQuality;
+                if (Math.Abs(cha) <= threshold)
+                {// 绿色
+                    BackColor = Color.FromArgb(0, 255, 0);
+                }
+                else if (cha > 0)
+                {// 浅红
+                    BackColor = Color.FromArgb(255, 128, 128);
+                }
+                else if (cha < 0 && Math.Abs(cha) != StandardQuality)
+                {// 黄色
+                    BackColor = Color.Yellow;
+                }
+                else
+                {
+                    BackColor = Color.White;
+                }
+            }
 
-        private void 串口ToolStripMenuItem_Click(object sender, EventArgs e)
-        {// 菜单栏的通讯-串口
-            new PortSettingBox().Show();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -320,11 +321,6 @@ namespace RecipeAssistant
 
         }
 
-        private void 版本ToolStripMenuItem_Click(object sender, EventArgs e)
-        {// 版本信息
-            new VersionBox().Show();
-        }
-
         private void button5_Click(object sender, EventArgs e)
         {// 配方添加按钮
             string glassName = comboBox1.SelectedItem as string;
@@ -355,30 +351,6 @@ namespace RecipeAssistant
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {// 监视串口状态
-            if (serialPort.IsOpen)
-            {
-                indicateConnectionSuccess();
-            }
-            else
-            {
-                indicateConnectionFailure();
-            }
-        }
-
-        private void indicateConnectionFailure()
-        {
-            toolStripStatusLabel2.Text = "未连接";
-            toolStripStatusLabel2.ForeColor = Color.Red;
-        }
-
-        private void indicateConnectionSuccess()
-        {
-            toolStripStatusLabel2.Text = "连接成功";
-            toolStripStatusLabel2.ForeColor = Color.Green;
-        }
-
         private void toolStripButton2_Click(object sender, EventArgs e)
         {// 断开连接按钮
             serialPort.Close();
@@ -406,5 +378,49 @@ namespace RecipeAssistant
                 progressBar1.Value = (int)(rate * 100);
             }
         }
+
+        #region 菜单栏
+        private void 串口ToolStripMenuItem_Click(object sender, EventArgs e)
+        {// 菜单栏的通讯-串口
+            new PortSettingBox().Show();
+        }
+
+        private void 误差设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {// 菜单栏的误差设置项
+            new ErrorThresholdBox().Show();
+        }
+
+        private void 版本ToolStripMenuItem_Click(object sender, EventArgs e)
+        {// 版本信息
+            new VersionBox().Show();
+        }
+
+        #endregion
+
+        #region 状态栏
+        private void timer1_Tick(object sender, EventArgs e)
+        {// 监视串口状态
+            if (serialPort.IsOpen)
+            {
+                indicateConnectionSuccess();
+            }
+            else
+            {
+                indicateConnectionFailure();
+            }
+        }
+
+        private void indicateConnectionFailure()
+        {
+            toolStripStatusLabel2.Text = "未连接";
+            toolStripStatusLabel2.ForeColor = Color.Red;
+        }
+
+        private void indicateConnectionSuccess()
+        {
+            toolStripStatusLabel2.Text = "连接成功";
+            toolStripStatusLabel2.ForeColor = Color.Green;
+        }
+        #endregion
     }
 }

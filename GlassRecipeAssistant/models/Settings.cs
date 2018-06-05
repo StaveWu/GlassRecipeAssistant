@@ -13,6 +13,7 @@ namespace RecipeAssistant.models
         private static XmlParser xmlParser = new XmlParser(path);
         private const string baudRateXpath = "//serialPort/baudRate";
         private const string portNameXpath = "//serialPort/portName";
+        private const string errorThresholdPath = "//errorThreshold";
 
         public static string BuadRate
         {
@@ -34,6 +35,18 @@ namespace RecipeAssistant.models
             set
             {
                 xmlParser.set(portNameXpath, value);
+            }
+        }
+
+        public static double ErrorThreshold
+        {
+            get
+            {
+                return Convert.ToDouble(xmlParser.get(errorThresholdPath));
+            }
+            set
+            {
+                xmlParser.set(errorThresholdPath, "" + value);
             }
         }
     }
