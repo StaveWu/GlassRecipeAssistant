@@ -660,8 +660,6 @@ namespace RecipeAssistant
             return false;
         }
 
-        private void checkPassWord
-
         #endregion
 
         private void 密码ToolStripMenuItem_Click(object sender, EventArgs e)
