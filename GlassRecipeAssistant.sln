@@ -5,16 +5,64 @@ VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlassRecipeAssistant", "GlassRecipeAssistant\GlassRecipeAssistant.csproj", "{4EA6E206-F7AC-48AF-A271-410219768340}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201806051339", "Setup201806051339\Setup201806051339.vdproj", "{69351A1D-910F-4127-95C9-EB3CF0EE89F9}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201806061034", "Setup201806061034\Setup201806061034.vdproj", "{5DD58207-6904-43A4-BE1D-5FA24C98A3CD}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201806061125", "Setup201806061125\Setup201806061125.vdproj", "{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{4EA6E206-F7AC-48AF-A271-410219768340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4EA6E206-F7AC-48AF-A271-410219768340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EA6E206-F7AC-48AF-A271-410219768340}.Debug|x64.ActiveCfg = Debug|x64
+		{4EA6E206-F7AC-48AF-A271-410219768340}.Debug|x64.Build.0 = Debug|x64
+		{4EA6E206-F7AC-48AF-A271-410219768340}.Debug|x86.ActiveCfg = Debug|x86
+		{4EA6E206-F7AC-48AF-A271-410219768340}.Debug|x86.Build.0 = Debug|x86
 		{4EA6E206-F7AC-48AF-A271-410219768340}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EA6E206-F7AC-48AF-A271-410219768340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EA6E206-F7AC-48AF-A271-410219768340}.Release|x64.ActiveCfg = Release|x64
+		{4EA6E206-F7AC-48AF-A271-410219768340}.Release|x64.Build.0 = Release|x64
+		{4EA6E206-F7AC-48AF-A271-410219768340}.Release|x86.ActiveCfg = Release|x86
+		{4EA6E206-F7AC-48AF-A271-410219768340}.Release|x86.Build.0 = Release|x86
+		{69351A1D-910F-4127-95C9-EB3CF0EE89F9}.Debug|Any CPU.ActiveCfg = Debug
+		{69351A1D-910F-4127-95C9-EB3CF0EE89F9}.Debug|x64.ActiveCfg = Debug
+		{69351A1D-910F-4127-95C9-EB3CF0EE89F9}.Debug|x64.Build.0 = Debug
+		{69351A1D-910F-4127-95C9-EB3CF0EE89F9}.Debug|x86.ActiveCfg = Debug
+		{69351A1D-910F-4127-95C9-EB3CF0EE89F9}.Debug|x86.Build.0 = Debug
+		{69351A1D-910F-4127-95C9-EB3CF0EE89F9}.Release|Any CPU.ActiveCfg = Release
+		{69351A1D-910F-4127-95C9-EB3CF0EE89F9}.Release|x64.ActiveCfg = Release
+		{69351A1D-910F-4127-95C9-EB3CF0EE89F9}.Release|x64.Build.0 = Release
+		{69351A1D-910F-4127-95C9-EB3CF0EE89F9}.Release|x86.ActiveCfg = Release
+		{69351A1D-910F-4127-95C9-EB3CF0EE89F9}.Release|x86.Build.0 = Release
+		{5DD58207-6904-43A4-BE1D-5FA24C98A3CD}.Debug|Any CPU.ActiveCfg = Debug
+		{5DD58207-6904-43A4-BE1D-5FA24C98A3CD}.Debug|x64.ActiveCfg = Debug
+		{5DD58207-6904-43A4-BE1D-5FA24C98A3CD}.Debug|x64.Build.0 = Debug
+		{5DD58207-6904-43A4-BE1D-5FA24C98A3CD}.Debug|x86.ActiveCfg = Debug
+		{5DD58207-6904-43A4-BE1D-5FA24C98A3CD}.Debug|x86.Build.0 = Debug
+		{5DD58207-6904-43A4-BE1D-5FA24C98A3CD}.Release|Any CPU.ActiveCfg = Release
+		{5DD58207-6904-43A4-BE1D-5FA24C98A3CD}.Release|x64.ActiveCfg = Release
+		{5DD58207-6904-43A4-BE1D-5FA24C98A3CD}.Release|x64.Build.0 = Release
+		{5DD58207-6904-43A4-BE1D-5FA24C98A3CD}.Release|x86.ActiveCfg = Release
+		{5DD58207-6904-43A4-BE1D-5FA24C98A3CD}.Release|x86.Build.0 = Release
+		{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}.Debug|Any CPU.ActiveCfg = Debug
+		{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}.Debug|x64.ActiveCfg = Debug
+		{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}.Debug|x64.Build.0 = Debug
+		{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}.Debug|x86.ActiveCfg = Debug
+		{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}.Debug|x86.Build.0 = Debug
+		{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}.Release|Any CPU.ActiveCfg = Release
+		{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}.Release|x64.ActiveCfg = Release
+		{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}.Release|x64.Build.0 = Release
+		{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}.Release|x86.ActiveCfg = Release
+		{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

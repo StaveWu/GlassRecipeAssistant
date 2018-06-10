@@ -61,53 +61,9 @@ namespace RecipeAssistant
             // 状态栏监视定时器
             timer1.Start();
 
+            // 质量更新定时器
             timer2.Start();
 
-        }
-
-        /// <summary>
-        /// 回调函数，加载镜片型号
-        /// </summary>
-        public void loadGlasses()
-        {
-            comboBox1.Items.Clear();
-            comboBox1.Text = "";
-            List<string> gs = grModel.findAllGlasses();
-            foreach (string ele in gs)
-            {
-                comboBox1.Items.Add(ele);
-            }
-            if (comboBox1.Items.Count != 0)
-            {
-                comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
-            }
-        }
-
-        /// <summary>
-        /// 加载配方
-        /// </summary>
-        public void loadRecipes()
-        {
-            listBox1.Items.Clear();
-            string glass = (string)comboBox1.SelectedItem;
-            Dictionary<string, double> recipes = grModel.findRecipes(glass);
-            if (recipes != null)
-            {
-                foreach (string ele in recipes.Keys)
-                {
-                    listBox1.Items.Add(new ListBoxItemInfo(ele, recipes[ele]));
-                }
-            }
-        }
-
-        /// <summary>
-        /// 连接设备
-        /// </summary>
-        public void connectDevice()
-        {
-            serialPort.PortName = Settings.PortName;
-            serialPort.BaudRate = Convert.ToInt32(Settings.BuadRate);
-            serialPort.Open();
         }
 
         /// <summary>
@@ -124,7 +80,7 @@ namespace RecipeAssistant
             {
                 RecipeName = recipeName;
                 StandardQuality = standardQuality;
-                BackColor = Color.White;
+                BackColor = Color.FromArgb(209, 209, 209); // 灰色
             }
 
             public override String ToString()
@@ -161,11 +117,55 @@ namespace RecipeAssistant
                     BackColor = Color.Yellow;
                 }
                 else
-                {
-                    BackColor = Color.White;
+                {// 灰色
+                    BackColor = Color.FromArgb(209, 209, 209);
                 }
             }
 
+        }
+
+        /// <summary>
+        /// 回调函数，加载镜片型号
+        /// </summary>
+        public void loadGlasses()
+        {
+            clearRecipesCache();
+            clearGlassesCache();
+            List<string> gs = grModel.findAllGlasses();
+            foreach (string ele in gs)
+            {
+                comboBox1.Items.Add(ele);
+            }
+            if (!isGlassesEmpty())
+            {
+                comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
+            }
+        }
+
+        /// <summary>
+        /// 加载配方
+        /// </summary>
+        public void loadRecipes()
+        {
+            clearRecipesCache();
+            Dictionary<string, double> recipes = grModel.findRecipes(getSelectedGlassName());
+            if (recipes != null)
+            {
+                foreach (string ele in recipes.Keys)
+                {
+                    listBox1.Items.Add(new ListBoxItemInfo(ele, recipes[ele]));
+                }
+            }
+        }
+
+        /// <summary>
+        /// 连接设备
+        /// </summary>
+        public void connectDevice()
+        {
+            serialPort.PortName = Settings.PortName;
+            serialPort.BaudRate = Convert.ToInt32(Settings.BuadRate);
+            serialPort.Open();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -200,8 +200,12 @@ namespace RecipeAssistant
 
         private void button3_Click(object sender, EventArgs e)
         {// 删除按钮
-            string sg = (string)comboBox1.SelectedItem;
-            grModel.deleteGlass(sg);
+            if (checkGlassSelected())
+            {
+                grModel.deleteGlass(getSelectedGlassName());
+            }
+
+            
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -225,12 +229,14 @@ namespace RecipeAssistant
                 recipeQualityStrategy = new ZeroQualityStrategy(realTimeQuality);
             }
             label7.Text = "" + itemInfo.StandardQuality + "g";
+            label8.Text = itemInfo.RecipeName;
+
             currentSelectedItem = itemInfo;
 
             timer2.Start();
         }
 
-        private bool isWeight(string str)
+        private bool containsWeightMessage(string str)
         {
             return Regex.IsMatch(str, @"^WT");
         }
@@ -238,7 +244,7 @@ namespace RecipeAssistant
         private double getWeight(string str)
         {// 从串口报文中获取weight
             string[] s = str.Split(':');
-            return Convert.ToDouble(s[1]);
+            return Convert.ToDouble(s[1].Substring(0, s[1].Length - 1));
         }
 
         private void dataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -247,56 +253,58 @@ namespace RecipeAssistant
             {
                 try
                 {// 从串口中获取并更新实时质量
-                    string received = serialPort.ReadLine().Trim();
-                    //string received = serialPort.ReadExisting().Trim();
-                    if (!isWeight(received))
+                    //string received = serialPort.ReadLine().Trim();
+                    string received = serialPort.ReadExisting().Trim();
+                    string[] messages = received.Split('\n');
+                    foreach (string s in messages)
                     {
-                        return;
+                        if (containsWeightMessage(s))
+                        {
+                            realTimeQuality = getWeight(s.Trim());
+                        }
                     }
-                    realTimeQuality = getWeight(received);
                 }
                 catch (Exception ex)
                 {
                     serialPort.Close();
                     MessageBox.Show(ex.Message);
-                    Console.WriteLine(ex.StackTrace);
                 }
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {// 下一个配方按钮
-            int id = listBox1.SelectedIndex;
-            if (id < 0)
+            if (checkRecipeSelected() && !checkLastRecipeSelected())
             {
-                return;
-            }
-            else if (id == listBox1.Items.Count - 1)
-            {
-                MessageBox.Show("已经是最后一个了！");
-            }
-            else
-            {
-                listBox1.SelectedIndex = id + 1;
+                double cha = getSelectedRecipes().CurrentQuality - getSelectedRecipes().StandardQuality;
+                bool withinErrorThreshold = Math.Abs(cha) <= Settings.ErrorThreshold;
+                if (!withinErrorThreshold)
+                {
+                    MessageBox.Show("不在误差范围内，请继续调整该配方质量！");
+                    return;
+                }
+                listBox1.SelectedIndex += 1;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {// 完成按钮
-            if (comboBox1.Items.Count == 0 || listBox1.Items.Count == 0)
+            if (checkGlassSelected() && checkRecipeSelected())
             {
-                return;
+                recordRecipesWeight();
+                weighOut();
+                this.Refresh();
             }
-            string glass = comboBox1.SelectedItem.ToString();
-            listBox1.SelectedIndex = -1;    // 让item失去焦点
+        }
+
+        private void recordRecipesWeight()
+        {// 记录当前各配方质量
             Dictionary<string, double> recipes = new Dictionary<string, double>();
             foreach (ListBoxItemInfo ele in listBox1.Items)
             {
                 recipes.Add(ele.RecipeName, ele.CurrentQuality);
-                ele.CurrentQuality = 0.0;   // 清空item存储的数据
             }
-            logger.write(glass, recipes);   // 记录当前各配方质量
-            this.Refresh();
+            logger.write(getSelectedGlassName(), recipes);
         }
 
         private void listBox1_DrawItem(object sender, DrawItemEventArgs e)
@@ -323,49 +331,39 @@ namespace RecipeAssistant
 
         private void button5_Click(object sender, EventArgs e)
         {// 配方添加按钮
-            string glassName = comboBox1.SelectedItem as string;
-            if (glassName == null)
+            if (checkGlassSelected())
             {
-                MessageBox.Show("请先选择镜片型号！");
-            }
-            else
-            {
-                new RecipeAddBox(grModel, glassName).Show();
+                new RecipeAddBox(grModel, getSelectedGlassName()).Show();
             }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {// 配方删除按钮
-            string glassName = comboBox1.SelectedItem as string;
-            if (glassName == null)
+            if (checkGlassSelected() && checkRecipeSelected())
             {
-                MessageBox.Show("请先选择镜片型号！");
-            }
-            else if (listBox1.SelectedIndex < 0)
-            {
-                MessageBox.Show("请先选择配方！");
-            }
-            else
-            {
-                grModel.deleteRecipe(glassName, ((ListBoxItemInfo)listBox1.SelectedItem).RecipeName);
+                grModel.deleteRecipe(getSelectedGlassName(), ((ListBoxItemInfo)listBox1.SelectedItem).RecipeName);
             }
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {// 断开连接按钮
-            serialPort.Close();
+            if (serialPort.IsOpen)
+            {
+                serialPort.Close();
+            }
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {// 更新总质量、配方当前质量以及进度条
-            label5.Text = realTimeQuality.ToString() + "g";
+            toolStripStatusLabel5.Text = realTimeQuality.ToString() + "g";
             if (currentSelectedItem != null)
             {
                 currentSelectedItem.CurrentQuality = recipeQualityStrategy.getCurrentQuality(realTimeQuality);
 
                 label3.Text = "" + currentSelectedItem.CurrentQuality + "g";
                 double rate = (double)currentSelectedItem.CurrentQuality / (double)currentSelectedItem.StandardQuality;
-                label2.Text = "" + (rate * 100).ToString("f2") + "%";
+
+                circularProgressBar1.Text = "" + Math.Round(rate * 100) + "%";
                 // progressBar只接受0-1的数值
                 if (rate < 0)
                 {
@@ -375,9 +373,48 @@ namespace RecipeAssistant
                 {
                     rate = 1;
                 }
-                progressBar1.Value = (int)(rate * 100);
+                circularProgressBar1.Value = (int)(rate * 100);
+                changeProgressBarColor();
             }
         }
+
+        private void changeProgressBarColor()
+        {
+            if (nonRecipeSelected())
+            {
+                return;
+            }
+            double cha = getSelectedRecipes().CurrentQuality - getSelectedRecipes().StandardQuality;
+            if (Math.Abs(cha) <= Settings.ErrorThreshold)
+            {// 绿色
+                circularProgressBar1.ProgressColor = Color.FromArgb(34, 177, 76);
+                circularProgressBar1.OuterColor = Color.FromArgb(181, 230, 29);
+            }
+            else if (cha > 0)
+            {// 红色
+                circularProgressBar1.ProgressColor = Color.FromArgb(237, 28, 36);
+                circularProgressBar1.OuterColor = Color.FromArgb(255, 174, 201);
+            }
+            else if (cha < 0 && Math.Abs(cha) != Settings.ErrorThreshold)
+            {// 蓝色
+                circularProgressBar1.ProgressColor = Color.FromArgb(0, 162, 232);
+                circularProgressBar1.OuterColor = Color.FromArgb(153, 217, 234);
+            }
+            else
+            {// 默认为蓝色
+                circularProgressBar1.ProgressColor = Color.FromArgb(0, 162, 232);
+                circularProgressBar1.OuterColor = Color.FromArgb(153, 217, 234);
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {// 开始称重按钮
+            if (!isRecipesEmpty())
+            {
+                weighIn();
+            }
+        }
+
 
         #region 菜单栏
         private void 串口ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -422,5 +459,107 @@ namespace RecipeAssistant
             toolStripStatusLabel2.ForeColor = Color.Green;
         }
         #endregion
+
+        #region 界面的粒子操作
+
+        private void clearGlassesCache()
+        {
+            comboBox1.Items.Clear();
+            comboBox1.Text = "";
+        }
+
+        private void clearRecipesCache()
+        {
+            listBox1.Items.Clear();
+        }
+
+        private bool isGlassesEmpty()
+        {
+            return comboBox1.Items.Count <= 0;
+        }
+
+        private bool isRecipesEmpty()
+        {
+            return listBox1.Items.Count <= 0;
+        }
+
+        private string getSelectedGlassName()
+        {
+            return comboBox1.SelectedItem as string;
+        }
+
+        private ListBoxItemInfo getSelectedRecipes()
+        {
+            return listBox1.SelectedItem as ListBoxItemInfo;
+        }
+
+        private void weighIn()
+        {// 称重中
+            listBox1.SelectedIndex = 0;
+            label3.Enabled = true;
+        }
+
+        private void weighOut()
+        {// 称重完成
+            listBox1.SelectedIndex = -1;
+            label3.Enabled = false;
+
+            clearItemsWeightCache();
+        }
+
+        private void clearItemsWeightCache()
+        {// 清空item存储的数据
+            foreach (ListBoxItemInfo ele in listBox1.Items)
+            {
+                ele.CurrentQuality = 0.0;
+            }
+        }
+
+        private bool checkGlassSelected()
+        {
+            if (nonGlassSelected())
+            {
+                MessageBox.Show("请先选择镜片型号！");
+                return false;
+            }
+            return true;
+        }
+
+        private bool checkRecipeSelected()
+        {
+            if (nonRecipeSelected())
+            {
+                MessageBox.Show("请先选择配方！");
+                return false;
+            }
+            return true;
+        }
+
+        private bool nonGlassSelected()
+        {
+            return comboBox1.SelectedIndex < 0;
+        }
+
+        private bool nonRecipeSelected()
+        {
+            return listBox1.SelectedIndex < 0;
+        }
+
+        private bool isLastRecipeSelected()
+        {
+            return listBox1.SelectedIndex == listBox1.Items.Count - 1;
+        }
+
+        private bool checkLastRecipeSelected()
+        {
+            if (isLastRecipeSelected())
+            {
+                MessageBox.Show("已经是最后一个了！");
+                return true;
+            }
+            return false;
+        }
+        #endregion
+
     }
 }
