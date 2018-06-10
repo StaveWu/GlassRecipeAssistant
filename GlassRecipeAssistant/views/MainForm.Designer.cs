@@ -70,6 +70,7 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -107,7 +108,8 @@
             // 
             this.连接ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.串口ToolStripMenuItem,
-            this.误差设置ToolStripMenuItem});
+            this.误差设置ToolStripMenuItem,
+            this.密码ToolStripMenuItem});
             this.连接ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.10084F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.连接ToolStripMenuItem.Name = "连接ToolStripMenuItem";
             this.连接ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -186,7 +188,7 @@
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label7.Size = new System.Drawing.Size(281, 35);
             this.label7.TabIndex = 4;
-            this.label7.Text = "0g";
+            this.label7.Text = "-";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // button2
@@ -293,6 +295,7 @@
             // listBox1
             // 
             this.listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox1.Enabled = false;
             this.listBox1.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 35;
@@ -480,6 +483,7 @@
             this.button9.TabIndex = 1;
             this.button9.Text = "删除";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button8
             // 
@@ -489,6 +493,7 @@
             this.button8.TabIndex = 1;
             this.button8.Text = "添加";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // comboBox2
             // 
@@ -497,6 +502,14 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(211, 38);
             this.comboBox2.TabIndex = 0;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // 密码ToolStripMenuItem
+            // 
+            this.密码ToolStripMenuItem.Name = "密码ToolStripMenuItem";
+            this.密码ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
+            this.密码ToolStripMenuItem.Text = "密码修改";
+            this.密码ToolStripMenuItem.Click += new System.EventHandler(this.密码ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -575,6 +588,7 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ToolStripMenuItem 密码ToolStripMenuItem;
     }
 }
 

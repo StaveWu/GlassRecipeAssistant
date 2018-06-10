@@ -132,6 +132,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReCheckQualityStrategy.cs" />
     <Compile Include="RegexUtils.cs" />
+    <Compile Include="views\ClientAddBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\ClientAddBox.Designer.cs">
+      <DependentUpon>ClientAddBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\ErrorThresholdBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,17 +150,35 @@
     <Compile Include="views\GlassAddBox.Designer.cs">
       <DependentUpon>GlassAddBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\LoginBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\LoginBox.Designer.cs">
+      <DependentUpon>LoginBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="views\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\PassWordBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\PassWordBox.Designer.cs">
+      <DependentUpon>PassWordBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\PortSettingBox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="views\PortSettingBox.Designer.cs">
       <DependentUpon>PortSettingBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\QualityEnterBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\QualityEnterBox.Designer.cs">
+      <DependentUpon>QualityEnterBox.cs</DependentUpon>
     </Compile>
     <Compile Include="views\RecipeAddBox.cs">
       <SubType>Form</SubType>
@@ -184,11 +208,23 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="views\ClientAddBox.resx">
+      <DependentUpon>ClientAddBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\ErrorThresholdBox.resx">
       <DependentUpon>ErrorThresholdBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\LoginBox.resx">
+      <DependentUpon>LoginBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\PassWordBox.resx">
+      <DependentUpon>PassWordBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\QualityEnterBox.resx">
+      <DependentUpon>QualityEnterBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\RecipesResultBox.resx">
       <DependentUpon>RecipesResultBox.cs</DependentUpon>

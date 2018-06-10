@@ -14,6 +14,7 @@ namespace RecipeAssistant.models
         private const string baudRateXpath = "//serialPort/baudRate";
         private const string portNameXpath = "//serialPort/portName";
         private const string errorThresholdPath = "//errorThreshold";
+        private const string passwordXPath = "//password";
 
         public static string BuadRate
         {
@@ -47,6 +48,18 @@ namespace RecipeAssistant.models
             set
             {
                 xmlParser.set(errorThresholdPath, "" + value);
+            }
+        }
+
+        public static string Password
+        {
+            get
+            {
+                return xmlParser.get(passwordXPath);
+            }
+            set
+            {
+                xmlParser.set(passwordXPath, value);
             }
         }
     }

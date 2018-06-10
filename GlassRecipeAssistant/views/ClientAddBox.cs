@@ -10,22 +10,20 @@ using System.Windows.Forms;
 
 namespace RecipeAssistant.models
 {
-    public partial class GlassAddBox : Form
+    public partial class ClientAddBox : Form
     {
         private IGlassRecipesModel model;
-        private string clientName;
 
-        public GlassAddBox(IGlassRecipesModel model, string clientName)
+        public ClientAddBox(IGlassRecipesModel model)
         {
             InitializeComponent();
             label2.Visible = false;
             this.model = model;
-            this.clientName = clientName;
         }
 
-        private void addGlass()
+        private void addClient()
         {
-            if (model.containsGlass(textBox1.Text, clientName))
+            if (model.containsClient(textBox1.Text))
             {
                 textBox1.BackColor = Color.Yellow;
                 label2.Visible = true;
@@ -34,14 +32,14 @@ namespace RecipeAssistant.models
             {
                 textBox1.BackColor = Color.White;
                 label2.Visible = false;
-                model.addGlass(textBox1.Text, clientName);
+                model.addClient(textBox1.Text);
                 this.Close();
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {// 添加按钮
-            addGlass();
+            addClient();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -53,7 +51,7 @@ namespace RecipeAssistant.models
         {
             if (e.KeyCode == Keys.Enter)
             {
-                addGlass();
+                addClient();
             }
         }
     }

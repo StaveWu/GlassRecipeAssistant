@@ -10,28 +10,43 @@ namespace RecipeAssistant.models
 
     public delegate void RecipeAddedHandler();
 
+    public delegate void ClientAddedHandler();
+
     /// <summary>
     /// 定义该接口主要是考虑到以后可能会换数据库的情况
     /// </summary>
     public interface IGlassRecipesModel
     {
-        void addGlass(string glassName);
+        void addClient(String clientName);
 
-        void deleteGlass(string glassName);
+        void deleteClient(string clientName);
 
-        void deleteRecipe(string glassName, string recipeName);
+        List<string> findClients();
 
-        void addRecipe(string glassName, string recipeName, double quality);
 
-        Dictionary<string, double> findRecipes(string glassName);
+        void addGlass(string glassName, string clientName);
 
-        List<string> findAllGlasses();
+        void deleteGlass(string glassName, string clientName);
 
-        bool contains(string glassName);
+        List<string> findGlasses(string clientName);
+
+
+        void addRecipe(string clientName, string glassName, string recipeName, double quality);
+
+        void deleteRecipe(string clientName, string glassName, string recipeName);
+
+        Dictionary<string, double> findRecipes(string clientName, string glassName);
+
+
+        bool containsClient(string clientName);
+
+        bool containsGlass(string glassName, string clientName);
 
         event GlassAddedHandler GlassChanged;
 
         event RecipeAddedHandler RecipeChanged;
+
+        event ClientAddedHandler ClientChanged;
 
 
     }

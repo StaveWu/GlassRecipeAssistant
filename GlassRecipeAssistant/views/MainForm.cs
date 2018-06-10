@@ -23,6 +23,11 @@ namespace RecipeAssistant
         /// </summary>
         private double realTimeQuality;
 
+        /// <summary>
+        /// 原料质量
+        /// </summary>
+        private double rawMaterialQuality = 10;
+
         // model
         private SerialPort serialPort;
         private IGlassRecipesModel grModel;
@@ -52,9 +57,11 @@ namespace RecipeAssistant
             // 注册回调
             serialPort.DataReceived += new SerialDataReceivedEventHandler(dataReceived);
 
+            grModel.ClientChanged += loadClients;
             grModel.GlassChanged += loadGlasses;
             grModel.RecipeChanged += loadRecipes;
 
+            loadClients();
             loadGlasses();
             loadRecipes();
 
@@ -124,6 +131,23 @@ namespace RecipeAssistant
 
         }
 
+        public void loadClients()
+        {
+            clearClientsCache();
+            clearRecipesCache();
+            clearGlassesCache();
+
+            List<string> gs = grModel.findClients();
+            foreach (string ele in gs)
+            {
+                comboBox2.Items.Add(ele);
+            }
+            if (!isClientEmpty())
+            {
+                comboBox2.SelectedIndex = comboBox2.Items.Count - 1;
+            }
+        }
+
         /// <summary>
         /// 回调函数，加载镜片型号
         /// </summary>
@@ -131,7 +155,13 @@ namespace RecipeAssistant
         {
             clearRecipesCache();
             clearGlassesCache();
-            List<string> gs = grModel.findAllGlasses();
+
+            if (nonClientSelected())
+            {
+                return;
+            }
+
+            List<string> gs = grModel.findGlasses(getSelectedClientName());
             foreach (string ele in gs)
             {
                 comboBox1.Items.Add(ele);
@@ -140,6 +170,7 @@ namespace RecipeAssistant
             {
                 comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
             }
+
         }
 
         /// <summary>
@@ -148,7 +179,13 @@ namespace RecipeAssistant
         public void loadRecipes()
         {
             clearRecipesCache();
-            Dictionary<string, double> recipes = grModel.findRecipes(getSelectedGlassName());
+
+            if (nonClientSelected() || nonGlassSelected())
+            {
+                return;
+            }
+
+            Dictionary<string, double> recipes = grModel.findRecipes(getSelectedClientName(), getSelectedGlassName());
             if (recipes != null)
             {
                 foreach (string ele in recipes.Keys)
@@ -156,6 +193,7 @@ namespace RecipeAssistant
                     listBox1.Items.Add(new ListBoxItemInfo(ele, recipes[ele]));
                 }
             }
+
         }
 
         /// <summary>
@@ -188,24 +226,60 @@ namespace RecipeAssistant
 
         }
 
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {// 客户切换
+            loadGlasses();
+        }
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             loadRecipes();
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {// 添加客户按钮
+            new ClientAddBox(grModel).Show();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {// 删除客户按钮
+            if (checkClientSelected())
+            {
+                grModel.deleteClient(getSelectedClientName());
+            }
+        }
+
         private void button2_Click(object sender, EventArgs e)
-        {// 添加按钮
-            new GlassAddBox(grModel).Show();
+        {// 添加镜片按钮
+            if (checkClientSelected())
+            {
+                new GlassAddBox(grModel, getSelectedClientName()).Show();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
-        {// 删除按钮
-            if (checkGlassSelected())
+        {// 删除镜片按钮
+            if (checkClientSelected() && checkGlassSelected())
             {
-                grModel.deleteGlass(getSelectedGlassName());
+                grModel.deleteGlass(getSelectedGlassName(), getSelectedClientName());
             }
-
             
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {// 配方添加按钮
+            if (checkClientSelected() && checkGlassSelected())
+            {
+                new RecipeAddBox(grModel, getSelectedGlassName(), getSelectedClientName()).Show();
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {// 配方删除按钮
+            if (checkClientSelected() && checkGlassSelected() && checkRecipeSelected())
+            {
+                grModel.deleteRecipe(getSelectedClientName(), getSelectedGlassName(), ((ListBoxItemInfo)listBox1.SelectedItem).RecipeName);
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -274,17 +348,26 @@ namespace RecipeAssistant
 
         private void button4_Click(object sender, EventArgs e)
         {// 下一个配方按钮
-            if (checkRecipeSelected() && !checkLastRecipeSelected())
+            if (checkRecipeSelected() && checkWithinErrorThreshold() && !checkLastRecipeSelected())
             {
-                double cha = getSelectedRecipes().CurrentQuality - getSelectedRecipes().StandardQuality;
-                bool withinErrorThreshold = Math.Abs(cha) <= Settings.ErrorThreshold;
-                if (!withinErrorThreshold)
-                {
-                    MessageBox.Show("不在误差范围内，请继续调整该配方质量！");
-                    return;
-                }
                 listBox1.SelectedIndex += 1;
             }
+        }
+
+        private bool checkWithinErrorThreshold()
+        {
+            if (!withinErrorThreshold())
+            {
+                MessageBox.Show("不在误差范围内，请继续调整该配方质量！");
+                return false;
+            }
+            return true;
+        }
+
+        private bool withinErrorThreshold()
+        {
+            double cha = getSelectedRecipes().CurrentQuality - getSelectedRecipes().StandardQuality;
+            return Math.Abs(cha) <= Settings.ErrorThreshold;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -327,22 +410,6 @@ namespace RecipeAssistant
             }
             e.Graphics.DrawString(it.ToString(), e.Font, new SolidBrush(Color.Black), e.Bounds, null);
 
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {// 配方添加按钮
-            if (checkGlassSelected())
-            {
-                new RecipeAddBox(grModel, getSelectedGlassName()).Show();
-            }
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {// 配方删除按钮
-            if (checkGlassSelected() && checkRecipeSelected())
-            {
-                grModel.deleteRecipe(getSelectedGlassName(), ((ListBoxItemInfo)listBox1.SelectedItem).RecipeName);
-            }
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -409,10 +476,12 @@ namespace RecipeAssistant
 
         private void button7_Click(object sender, EventArgs e)
         {// 开始称重按钮
-            if (!isRecipesEmpty())
+            if (isRecipesEmpty())
             {
-                weighIn();
+                MessageBox.Show("配方不存在！");
+                return;
             }
+            weighIn();
         }
 
 
@@ -462,6 +531,12 @@ namespace RecipeAssistant
 
         #region 界面的粒子操作
 
+        private void clearClientsCache()
+        {
+            comboBox2.Items.Clear();
+            comboBox2.Text = "";
+        }
+
         private void clearGlassesCache()
         {
             comboBox1.Items.Clear();
@@ -473,6 +548,11 @@ namespace RecipeAssistant
             listBox1.Items.Clear();
         }
 
+        private bool isClientEmpty()
+        {
+            return comboBox2.Items.Count <= 0;
+        }
+
         private bool isGlassesEmpty()
         {
             return comboBox1.Items.Count <= 0;
@@ -481,6 +561,11 @@ namespace RecipeAssistant
         private bool isRecipesEmpty()
         {
             return listBox1.Items.Count <= 0;
+        }
+
+        private string getSelectedClientName()
+        {
+            return comboBox2.SelectedItem as string;
         }
 
         private string getSelectedGlassName()
@@ -515,6 +600,16 @@ namespace RecipeAssistant
             }
         }
 
+        private bool checkClientSelected()
+        {
+            if (nonClientSelected())
+            {
+                MessageBox.Show("请先选择客户！");
+                return false;
+            }
+            return true;
+        }
+
         private bool checkGlassSelected()
         {
             if (nonGlassSelected())
@@ -533,6 +628,11 @@ namespace RecipeAssistant
                 return false;
             }
             return true;
+        }
+
+        private bool nonClientSelected()
+        {
+            return comboBox2.SelectedIndex < 0;
         }
 
         private bool nonGlassSelected()
@@ -559,7 +659,14 @@ namespace RecipeAssistant
             }
             return false;
         }
+
+        private void checkPassWord
+
         #endregion
 
+        private void 密码ToolStripMenuItem_Click(object sender, EventArgs e)
+        {// 修改密码
+            new PassWordBox().Show();
+        }
     }
 }

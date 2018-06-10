@@ -24,9 +24,11 @@ namespace GlassRecipeAssistant {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class GlassRecipesDatabaseDataSet : global::System.Data.DataSet {
         
-        private GlassesDataTable tableGlasses;
+        private ClientsDataTable tableClients;
         
         private RecipesDataTable tableRecipes;
+        
+        private GlassesDataTable tableGlasses;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -56,11 +58,14 @@ namespace GlassRecipeAssistant {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Glasses"] != null)) {
-                    base.Tables.Add(new GlassesDataTable(ds.Tables["Glasses"]));
+                if ((ds.Tables["Clients"] != null)) {
+                    base.Tables.Add(new ClientsDataTable(ds.Tables["Clients"]));
                 }
                 if ((ds.Tables["Recipes"] != null)) {
                     base.Tables.Add(new RecipesDataTable(ds.Tables["Recipes"]));
+                }
+                if ((ds.Tables["Glasses"] != null)) {
+                    base.Tables.Add(new GlassesDataTable(ds.Tables["Glasses"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -84,9 +89,9 @@ namespace GlassRecipeAssistant {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GlassesDataTable Glasses {
+        public ClientsDataTable Clients {
             get {
-                return this.tableGlasses;
+                return this.tableClients;
             }
         }
         
@@ -97,6 +102,16 @@ namespace GlassRecipeAssistant {
         public RecipesDataTable Recipes {
             get {
                 return this.tableRecipes;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public GlassesDataTable Glasses {
+            get {
+                return this.tableGlasses;
             }
         }
         
@@ -167,11 +182,14 @@ namespace GlassRecipeAssistant {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Glasses"] != null)) {
-                    base.Tables.Add(new GlassesDataTable(ds.Tables["Glasses"]));
+                if ((ds.Tables["Clients"] != null)) {
+                    base.Tables.Add(new ClientsDataTable(ds.Tables["Clients"]));
                 }
                 if ((ds.Tables["Recipes"] != null)) {
                     base.Tables.Add(new RecipesDataTable(ds.Tables["Recipes"]));
+                }
+                if ((ds.Tables["Glasses"] != null)) {
+                    base.Tables.Add(new GlassesDataTable(ds.Tables["Glasses"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -206,16 +224,22 @@ namespace GlassRecipeAssistant {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableGlasses = ((GlassesDataTable)(base.Tables["Glasses"]));
+            this.tableClients = ((ClientsDataTable)(base.Tables["Clients"]));
             if ((initTable == true)) {
-                if ((this.tableGlasses != null)) {
-                    this.tableGlasses.InitVars();
+                if ((this.tableClients != null)) {
+                    this.tableClients.InitVars();
                 }
             }
             this.tableRecipes = ((RecipesDataTable)(base.Tables["Recipes"]));
             if ((initTable == true)) {
                 if ((this.tableRecipes != null)) {
                     this.tableRecipes.InitVars();
+                }
+            }
+            this.tableGlasses = ((GlassesDataTable)(base.Tables["Glasses"]));
+            if ((initTable == true)) {
+                if ((this.tableGlasses != null)) {
+                    this.tableGlasses.InitVars();
                 }
             }
         }
@@ -228,21 +252,29 @@ namespace GlassRecipeAssistant {
             this.Namespace = "http://tempuri.org/GlassRecipesDatabaseDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableGlasses = new GlassesDataTable();
-            base.Tables.Add(this.tableGlasses);
+            this.tableClients = new ClientsDataTable();
+            base.Tables.Add(this.tableClients);
             this.tableRecipes = new RecipesDataTable();
             base.Tables.Add(this.tableRecipes);
+            this.tableGlasses = new GlassesDataTable();
+            base.Tables.Add(this.tableGlasses);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeGlasses() {
+        private bool ShouldSerializeClients() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializeRecipes() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeGlasses() {
             return false;
         }
         
@@ -302,24 +334,27 @@ namespace GlassRecipeAssistant {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void GlassesRowChangeEventHandler(object sender, GlassesRowChangeEvent e);
+        public delegate void ClientsRowChangeEventHandler(object sender, ClientsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void RecipesRowChangeEventHandler(object sender, RecipesRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void GlassesRowChangeEventHandler(object sender, GlassesRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GlassesDataTable : global::System.Data.TypedTableBase<GlassesRow> {
+        public partial class ClientsDataTable : global::System.Data.TypedTableBase<ClientsRow> {
             
-            private global::System.Data.DataColumn columnGlassName;
+            private global::System.Data.DataColumn columnClientName;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public GlassesDataTable() {
-                this.TableName = "Glasses";
+            public ClientsDataTable() {
+                this.TableName = "Clients";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -327,7 +362,7 @@ namespace GlassRecipeAssistant {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal GlassesDataTable(global::System.Data.DataTable table) {
+            internal ClientsDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -344,16 +379,16 @@ namespace GlassRecipeAssistant {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected GlassesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ClientsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn GlassNameColumn {
+            public global::System.Data.DataColumn ClientNameColumn {
                 get {
-                    return this.columnGlassName;
+                    return this.columnClientName;
                 }
             }
             
@@ -368,52 +403,52 @@ namespace GlassRecipeAssistant {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public GlassesRow this[int index] {
+            public ClientsRow this[int index] {
                 get {
-                    return ((GlassesRow)(this.Rows[index]));
+                    return ((ClientsRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event GlassesRowChangeEventHandler GlassesRowChanging;
+            public event ClientsRowChangeEventHandler ClientsRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event GlassesRowChangeEventHandler GlassesRowChanged;
+            public event ClientsRowChangeEventHandler ClientsRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event GlassesRowChangeEventHandler GlassesRowDeleting;
+            public event ClientsRowChangeEventHandler ClientsRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event GlassesRowChangeEventHandler GlassesRowDeleted;
+            public event ClientsRowChangeEventHandler ClientsRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddGlassesRow(GlassesRow row) {
+            public void AddClientsRow(ClientsRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public GlassesRow AddGlassesRow(string GlassName) {
-                GlassesRow rowGlassesRow = ((GlassesRow)(this.NewRow()));
+            public ClientsRow AddClientsRow(string ClientName) {
+                ClientsRow rowClientsRow = ((ClientsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        GlassName};
-                rowGlassesRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowGlassesRow);
-                return rowGlassesRow;
+                        ClientName};
+                rowClientsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowClientsRow);
+                return rowClientsRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public GlassesRow FindByGlassName(string GlassName) {
-                return ((GlassesRow)(this.Rows.Find(new object[] {
-                            GlassName})));
+            public ClientsRow FindByClientName(string ClientName) {
+                return ((ClientsRow)(this.Rows.Find(new object[] {
+                            ClientName})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                GlassesDataTable cln = ((GlassesDataTable)(base.Clone()));
+                ClientsDataTable cln = ((ClientsDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -421,51 +456,51 @@ namespace GlassRecipeAssistant {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new GlassesDataTable();
+                return new ClientsDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnGlassName = base.Columns["GlassName"];
+                this.columnClientName = base.Columns["ClientName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnGlassName = new global::System.Data.DataColumn("GlassName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGlassName);
+                this.columnClientName = new global::System.Data.DataColumn("ClientName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClientName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnGlassName}, true));
-                this.columnGlassName.AllowDBNull = false;
-                this.columnGlassName.Unique = true;
-                this.columnGlassName.MaxLength = 50;
+                                this.columnClientName}, true));
+                this.columnClientName.AllowDBNull = false;
+                this.columnClientName.Unique = true;
+                this.columnClientName.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public GlassesRow NewGlassesRow() {
-                return ((GlassesRow)(this.NewRow()));
+            public ClientsRow NewClientsRow() {
+                return ((ClientsRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new GlassesRow(builder);
+                return new ClientsRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(GlassesRow);
+                return typeof(ClientsRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.GlassesRowChanged != null)) {
-                    this.GlassesRowChanged(this, new GlassesRowChangeEvent(((GlassesRow)(e.Row)), e.Action));
+                if ((this.ClientsRowChanged != null)) {
+                    this.ClientsRowChanged(this, new ClientsRowChangeEvent(((ClientsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -473,8 +508,8 @@ namespace GlassRecipeAssistant {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.GlassesRowChanging != null)) {
-                    this.GlassesRowChanging(this, new GlassesRowChangeEvent(((GlassesRow)(e.Row)), e.Action));
+                if ((this.ClientsRowChanging != null)) {
+                    this.ClientsRowChanging(this, new ClientsRowChangeEvent(((ClientsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -482,8 +517,8 @@ namespace GlassRecipeAssistant {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.GlassesRowDeleted != null)) {
-                    this.GlassesRowDeleted(this, new GlassesRowChangeEvent(((GlassesRow)(e.Row)), e.Action));
+                if ((this.ClientsRowDeleted != null)) {
+                    this.ClientsRowDeleted(this, new ClientsRowChangeEvent(((ClientsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -491,14 +526,14 @@ namespace GlassRecipeAssistant {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.GlassesRowDeleting != null)) {
-                    this.GlassesRowDeleting(this, new GlassesRowChangeEvent(((GlassesRow)(e.Row)), e.Action));
+                if ((this.ClientsRowDeleting != null)) {
+                    this.ClientsRowDeleting(this, new ClientsRowChangeEvent(((ClientsRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveGlassesRow(GlassesRow row) {
+            public void RemoveClientsRow(ClientsRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -525,7 +560,7 @@ namespace GlassRecipeAssistant {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "GlassesDataTable";
+                attribute2.FixedValue = "ClientsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -579,7 +614,9 @@ namespace GlassRecipeAssistant {
             
             private global::System.Data.DataColumn columnQuality;
             
-            private global::System.Data.DataColumn columnOwner;
+            private global::System.Data.DataColumn columnGlass;
+            
+            private global::System.Data.DataColumn columnClient;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -640,9 +677,17 @@ namespace GlassRecipeAssistant {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn OwnerColumn {
+            public global::System.Data.DataColumn GlassColumn {
                 get {
-                    return this.columnOwner;
+                    return this.columnGlass;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ClientColumn {
+                get {
+                    return this.columnClient;
                 }
             }
             
@@ -683,13 +728,14 @@ namespace GlassRecipeAssistant {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public RecipesRow AddRecipesRow(int Id, string RecipeName, double Quality, string Owner) {
+            public RecipesRow AddRecipesRow(int Id, string RecipeName, double Quality, string Glass, string Client) {
                 RecipesRow rowRecipesRow = ((RecipesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
                         RecipeName,
                         Quality,
-                        Owner};
+                        Glass,
+                        Client};
                 rowRecipesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRecipesRow);
                 return rowRecipesRow;
@@ -722,7 +768,8 @@ namespace GlassRecipeAssistant {
                 this.columnId = base.Columns["Id"];
                 this.columnRecipeName = base.Columns["RecipeName"];
                 this.columnQuality = base.Columns["Quality"];
-                this.columnOwner = base.Columns["Owner"];
+                this.columnGlass = base.Columns["Glass"];
+                this.columnClient = base.Columns["Client"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -734,14 +781,20 @@ namespace GlassRecipeAssistant {
                 base.Columns.Add(this.columnRecipeName);
                 this.columnQuality = new global::System.Data.DataColumn("Quality", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuality);
-                this.columnOwner = new global::System.Data.DataColumn("Owner", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOwner);
+                this.columnGlass = new global::System.Data.DataColumn("Glass", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGlass);
+                this.columnClient = new global::System.Data.DataColumn("Client", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClient);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AllowDBNull = false;
                 this.columnId.Unique = true;
+                this.columnRecipeName.AllowDBNull = false;
                 this.columnRecipeName.MaxLength = 50;
-                this.columnOwner.MaxLength = 50;
+                this.columnGlass.AllowDBNull = false;
+                this.columnGlass.MaxLength = 50;
+                this.columnClient.AllowDBNull = false;
+                this.columnClient.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -869,27 +922,317 @@ namespace GlassRecipeAssistant {
         }
         
         /// <summary>
-        ///Represents strongly named DataRow class.
+        ///Represents the strongly named DataTable class.
         ///</summary>
-        public partial class GlassesRow : global::System.Data.DataRow {
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class GlassesDataTable : global::System.Data.TypedTableBase<GlassesRow> {
             
-            private GlassesDataTable tableGlasses;
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnGlassName;
+            
+            private global::System.Data.DataColumn columnClient;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal GlassesRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableGlasses = ((GlassesDataTable)(this.Table));
+            public GlassesDataTable() {
+                this.TableName = "Glasses";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string GlassName {
+            internal GlassesDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected GlassesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
                 get {
-                    return ((string)(this[this.tableGlasses.GlassNameColumn]));
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn GlassNameColumn {
+                get {
+                    return this.columnGlassName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ClientColumn {
+                get {
+                    return this.columnClient;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public GlassesRow this[int index] {
+                get {
+                    return ((GlassesRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event GlassesRowChangeEventHandler GlassesRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event GlassesRowChangeEventHandler GlassesRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event GlassesRowChangeEventHandler GlassesRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event GlassesRowChangeEventHandler GlassesRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddGlassesRow(GlassesRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public GlassesRow AddGlassesRow(int Id, string GlassName, string Client) {
+                GlassesRow rowGlassesRow = ((GlassesRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Id,
+                        GlassName,
+                        Client};
+                rowGlassesRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowGlassesRow);
+                return rowGlassesRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public GlassesRow FindById(int Id) {
+                return ((GlassesRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                GlassesDataTable cln = ((GlassesDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new GlassesDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnGlassName = base.Columns["GlassName"];
+                this.columnClient = base.Columns["Client"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnGlassName = new global::System.Data.DataColumn("GlassName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGlassName);
+                this.columnClient = new global::System.Data.DataColumn("Client", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClient);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
+                this.columnGlassName.AllowDBNull = false;
+                this.columnGlassName.MaxLength = 50;
+                this.columnClient.AllowDBNull = false;
+                this.columnClient.MaxLength = 50;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public GlassesRow NewGlassesRow() {
+                return ((GlassesRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new GlassesRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(GlassesRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.GlassesRowChanged != null)) {
+                    this.GlassesRowChanged(this, new GlassesRowChangeEvent(((GlassesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.GlassesRowChanging != null)) {
+                    this.GlassesRowChanging(this, new GlassesRowChangeEvent(((GlassesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.GlassesRowDeleted != null)) {
+                    this.GlassesRowDeleted(this, new GlassesRowChangeEvent(((GlassesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.GlassesRowDeleting != null)) {
+                    this.GlassesRowDeleting(this, new GlassesRowChangeEvent(((GlassesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveGlassesRow(GlassesRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                GlassRecipesDatabaseDataSet ds = new GlassRecipesDatabaseDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "GlassesDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ClientsRow : global::System.Data.DataRow {
+            
+            private ClientsDataTable tableClients;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal ClientsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableClients = ((ClientsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ClientName {
+                get {
+                    return ((string)(this[this.tableClients.ClientNameColumn]));
                 }
                 set {
-                    this[this.tableGlasses.GlassNameColumn] = value;
+                    this[this.tableClients.ClientNameColumn] = value;
                 }
             }
         }
@@ -923,12 +1266,7 @@ namespace GlassRecipeAssistant {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string RecipeName {
                 get {
-                    try {
-                        return ((string)(this[this.tableRecipes.RecipeNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“Recipes”中列“RecipeName”的值为 DBNull。", e);
-                    }
+                    return ((string)(this[this.tableRecipes.RecipeNameColumn]));
                 }
                 set {
                     this[this.tableRecipes.RecipeNameColumn] = value;
@@ -953,30 +1291,24 @@ namespace GlassRecipeAssistant {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Owner {
+            public string Glass {
                 get {
-                    try {
-                        return ((string)(this[this.tableRecipes.OwnerColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“Recipes”中列“Owner”的值为 DBNull。", e);
-                    }
+                    return ((string)(this[this.tableRecipes.GlassColumn]));
                 }
                 set {
-                    this[this.tableRecipes.OwnerColumn] = value;
+                    this[this.tableRecipes.GlassColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRecipeNameNull() {
-                return this.IsNull(this.tableRecipes.RecipeNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRecipeNameNull() {
-                this[this.tableRecipes.RecipeNameColumn] = global::System.Convert.DBNull;
+            public string Client {
+                get {
+                    return ((string)(this[this.tableRecipes.ClientColumn]));
+                }
+                set {
+                    this[this.tableRecipes.ClientColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -990,17 +1322,53 @@ namespace GlassRecipeAssistant {
             public void SetQualityNull() {
                 this[this.tableRecipes.QualityColumn] = global::System.Convert.DBNull;
             }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class GlassesRow : global::System.Data.DataRow {
+            
+            private GlassesDataTable tableGlasses;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsOwnerNull() {
-                return this.IsNull(this.tableRecipes.OwnerColumn);
+            internal GlassesRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableGlasses = ((GlassesDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetOwnerNull() {
-                this[this.tableRecipes.OwnerColumn] = global::System.Convert.DBNull;
+            public int Id {
+                get {
+                    return ((int)(this[this.tableGlasses.IdColumn]));
+                }
+                set {
+                    this[this.tableGlasses.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string GlassName {
+                get {
+                    return ((string)(this[this.tableGlasses.GlassNameColumn]));
+                }
+                set {
+                    this[this.tableGlasses.GlassNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Client {
+                get {
+                    return ((string)(this[this.tableGlasses.ClientColumn]));
+                }
+                set {
+                    this[this.tableGlasses.ClientColumn] = value;
+                }
             }
         }
         
@@ -1008,22 +1376,22 @@ namespace GlassRecipeAssistant {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class GlassesRowChangeEvent : global::System.EventArgs {
+        public class ClientsRowChangeEvent : global::System.EventArgs {
             
-            private GlassesRow eventRow;
+            private ClientsRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public GlassesRowChangeEvent(GlassesRow row, global::System.Data.DataRowAction action) {
+            public ClientsRowChangeEvent(ClientsRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public GlassesRow Row {
+            public ClientsRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1071,6 +1439,40 @@ namespace GlassRecipeAssistant {
                 }
             }
         }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class GlassesRowChangeEvent : global::System.EventArgs {
+            
+            private GlassesRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public GlassesRowChangeEvent(GlassesRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public GlassesRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
     }
 }
 namespace GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters {
@@ -1085,7 +1487,7 @@ namespace GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class GlassesTableAdapter : global::System.ComponentModel.Component {
+    public partial class ClientsTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1099,7 +1501,7 @@ namespace GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public GlassesTableAdapter() {
+        public ClientsTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1196,27 +1598,28 @@ namespace GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Glasses";
-            tableMapping.ColumnMappings.Add("GlassName", "GlassName");
+            tableMapping.DataSetTable = "Clients";
+            tableMapping.ColumnMappings.Add("ClientName", "ClientName");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Glasses] WHERE (([GlassName] = @Original_GlassName))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Clients] WHERE (([ClientName] = @Original_ClientName))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GlassName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GlassName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Glasses] ([GlassName]) VALUES (@GlassName);\r\nSELECT GlassName " +
-                "FROM Glasses WHERE (GlassName = @GlassName)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Clients] ([ClientName]) VALUES (@ClientName);\r\nSELECT ClientNa" +
+                "me FROM Clients WHERE (ClientName = @ClientName)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GlassName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GlassName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Glasses] SET [GlassName] = @GlassName WHERE (([GlassName] = @Origin" +
-                "al_GlassName));\r\nSELECT GlassName FROM Glasses WHERE (GlassName = @GlassName)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Clients] SET [ClientName] = @ClientName WHERE (([ClientName] = @Ori" +
+                "ginal_ClientName));\r\nSELECT ClientName FROM Clients WHERE (ClientName = @ClientN" +
+                "ame)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GlassName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GlassName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GlassName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GlassName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1232,7 +1635,7 @@ namespace GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT GlassName FROM dbo.Glasses";
+            this._commandCollection[0].CommandText = "SELECT ClientName FROM dbo.Clients";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1240,7 +1643,7 @@ namespace GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(GlassRecipesDatabaseDataSet.GlassesDataTable dataTable) {
+        public virtual int Fill(GlassRecipesDatabaseDataSet.ClientsDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1253,9 +1656,9 @@ namespace GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual GlassRecipesDatabaseDataSet.GlassesDataTable GetData() {
+        public virtual GlassRecipesDatabaseDataSet.ClientsDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            GlassRecipesDatabaseDataSet.GlassesDataTable dataTable = new GlassRecipesDatabaseDataSet.GlassesDataTable();
+            GlassRecipesDatabaseDataSet.ClientsDataTable dataTable = new GlassRecipesDatabaseDataSet.ClientsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1263,7 +1666,7 @@ namespace GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(GlassRecipesDatabaseDataSet.GlassesDataTable dataTable) {
+        public virtual int Update(GlassRecipesDatabaseDataSet.ClientsDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -1271,7 +1674,7 @@ namespace GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(GlassRecipesDatabaseDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Glasses");
+            return this.Adapter.Update(dataSet, "Clients");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1293,12 +1696,12 @@ namespace GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_GlassName) {
-            if ((Original_GlassName == null)) {
-                throw new global::System.ArgumentNullException("Original_GlassName");
+        public virtual int Delete(string Original_ClientName) {
+            if ((Original_ClientName == null)) {
+                throw new global::System.ArgumentNullException("Original_ClientName");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_GlassName));
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_ClientName));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1320,12 +1723,12 @@ namespace GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string GlassName) {
-            if ((GlassName == null)) {
-                throw new global::System.ArgumentNullException("GlassName");
+        public virtual int Insert(string ClientName) {
+            if ((ClientName == null)) {
+                throw new global::System.ArgumentNullException("ClientName");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(GlassName));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ClientName));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1347,18 +1750,18 @@ namespace GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string GlassName, string Original_GlassName) {
-            if ((GlassName == null)) {
-                throw new global::System.ArgumentNullException("GlassName");
+        public virtual int Update(string ClientName, string Original_ClientName) {
+            if ((ClientName == null)) {
+                throw new global::System.ArgumentNullException("ClientName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(GlassName));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(ClientName));
             }
-            if ((Original_GlassName == null)) {
-                throw new global::System.ArgumentNullException("Original_GlassName");
+            if ((Original_ClientName == null)) {
+                throw new global::System.ArgumentNullException("Original_ClientName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Original_GlassName));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Original_ClientName));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1380,8 +1783,8 @@ namespace GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Original_GlassName) {
-            return this.Update(Original_GlassName, Original_GlassName);
+        public virtual int Update(string Original_ClientName) {
+            return this.Update(Original_ClientName, Original_ClientName);
         }
     }
     
@@ -1509,45 +1912,49 @@ namespace GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("RecipeName", "RecipeName");
             tableMapping.ColumnMappings.Add("Quality", "Quality");
-            tableMapping.ColumnMappings.Add("Owner", "Owner");
+            tableMapping.ColumnMappings.Add("Glass", "Glass");
+            tableMapping.ColumnMappings.Add("Client", "Client");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Recipes] WHERE (([Id] = @Original_Id) AND ((@IsNull_RecipeName = 1 AND [RecipeName] IS NULL) OR ([RecipeName] = @Original_RecipeName)) AND ((@IsNull_Quality = 1 AND [Quality] IS NULL) OR ([Quality] = @Original_Quality)) AND ((@IsNull_Owner = 1 AND [Owner] IS NULL) OR ([Owner] = @Original_Owner)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Recipes] WHERE (([Id] = @Original_Id) AND ([RecipeName] = @Ori" +
+                "ginal_RecipeName) AND ((@IsNull_Quality = 1 AND [Quality] IS NULL) OR ([Quality]" +
+                " = @Original_Quality)) AND ([Glass] = @Original_Glass) AND ([Client] = @Original" +
+                "_Client))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RecipeName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RecipeName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RecipeName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RecipeName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Quality", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quality", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quality", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quality", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Owner", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Owner", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Owner", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Owner", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Glass", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Glass", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Client", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Client", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Recipes] ([Id], [RecipeName], [Quality], [Owner]) VALUES (@Id," +
-                " @RecipeName, @Quality, @Owner);\r\nSELECT Id, RecipeName, Quality, Owner FROM Rec" +
-                "ipes WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Recipes] ([Id], [RecipeName], [Quality], [Glass], [Client]) VA" +
+                "LUES (@Id, @RecipeName, @Quality, @Glass, @Client);\r\nSELECT Id, RecipeName, Qual" +
+                "ity, Glass, Client FROM Recipes WHERE (Id = @Id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RecipeName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RecipeName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quality", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quality", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Owner", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Owner", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Glass", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Glass", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Client", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Client", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Recipes] SET [Id] = @Id, [RecipeName] = @RecipeName, [Quality] = @Quality, [Owner] = @Owner WHERE (([Id] = @Original_Id) AND ((@IsNull_RecipeName = 1 AND [RecipeName] IS NULL) OR ([RecipeName] = @Original_RecipeName)) AND ((@IsNull_Quality = 1 AND [Quality] IS NULL) OR ([Quality] = @Original_Quality)) AND ((@IsNull_Owner = 1 AND [Owner] IS NULL) OR ([Owner] = @Original_Owner)));
-SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Recipes] SET [Id] = @Id, [RecipeName] = @RecipeName, [Quality] = @Quality, [Glass] = @Glass, [Client] = @Client WHERE (([Id] = @Original_Id) AND ([RecipeName] = @Original_RecipeName) AND ((@IsNull_Quality = 1 AND [Quality] IS NULL) OR ([Quality] = @Original_Quality)) AND ([Glass] = @Original_Glass) AND ([Client] = @Original_Client));
+SELECT Id, RecipeName, Quality, Glass, Client FROM Recipes WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RecipeName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RecipeName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quality", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quality", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Owner", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Owner", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Glass", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Glass", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Client", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Client", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RecipeName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RecipeName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RecipeName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RecipeName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Quality", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quality", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quality", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quality", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Owner", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Owner", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Owner", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Owner", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Glass", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Glass", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Client", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Client", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1563,7 +1970,7 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, RecipeName, Quality, Owner FROM dbo.Recipes";
+            this._commandCollection[0].CommandText = "SELECT Id, RecipeName, Quality, Glass, Client FROM dbo.Recipes";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1624,31 +2031,33 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_RecipeName, global::System.Nullable<double> Original_Quality, string Original_Owner) {
+        public virtual int Delete(int Original_Id, string Original_RecipeName, global::System.Nullable<double> Original_Quality, string Original_Glass, string Original_Client) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_RecipeName == null)) {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_RecipeName");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_RecipeName));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_RecipeName));
             }
             if ((Original_Quality.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(Original_Quality.Value));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_Quality.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((Original_Owner == null)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            if ((Original_Glass == null)) {
+                throw new global::System.ArgumentNullException("Original_Glass");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Owner));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Glass));
+            }
+            if ((Original_Client == null)) {
+                throw new global::System.ArgumentNullException("Original_Client");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_Client));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1670,10 +2079,10 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Id, string RecipeName, global::System.Nullable<double> Quality, string Owner) {
+        public virtual int Insert(int Id, string RecipeName, global::System.Nullable<double> Quality, string Glass, string Client) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
             if ((RecipeName == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("RecipeName");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(RecipeName));
@@ -1684,11 +2093,17 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Owner == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            if ((Glass == null)) {
+                throw new global::System.ArgumentNullException("Glass");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Owner));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Glass));
+            }
+            if ((Client == null)) {
+                throw new global::System.ArgumentNullException("Client");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Client));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1710,10 +2125,10 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Id, string RecipeName, global::System.Nullable<double> Quality, string Owner, int Original_Id, string Original_RecipeName, global::System.Nullable<double> Original_Quality, string Original_Owner) {
+        public virtual int Update(int Id, string RecipeName, global::System.Nullable<double> Quality, string Glass, string Client, int Original_Id, string Original_RecipeName, global::System.Nullable<double> Original_Quality, string Original_Glass, string Original_Client) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
             if ((RecipeName == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("RecipeName");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(RecipeName));
@@ -1724,19 +2139,23 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Owner == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            if ((Glass == null)) {
+                throw new global::System.ArgumentNullException("Glass");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Owner));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Glass));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Id));
+            if ((Client == null)) {
+                throw new global::System.ArgumentNullException("Client");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Client));
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Id));
             if ((Original_RecipeName == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_RecipeName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_RecipeName));
             }
             if ((Original_Quality.HasValue == true)) {
@@ -1747,13 +2166,17 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_Owner == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            if ((Original_Glass == null)) {
+                throw new global::System.ArgumentNullException("Original_Glass");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Owner));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Glass));
+            }
+            if ((Original_Client == null)) {
+                throw new global::System.ArgumentNullException("Original_Client");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Client));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1775,8 +2198,358 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string RecipeName, global::System.Nullable<double> Quality, string Owner, int Original_Id, string Original_RecipeName, global::System.Nullable<double> Original_Quality, string Original_Owner) {
-            return this.Update(Original_Id, RecipeName, Quality, Owner, Original_Id, Original_RecipeName, Original_Quality, Original_Owner);
+        public virtual int Update(string RecipeName, global::System.Nullable<double> Quality, string Glass, string Client, int Original_Id, string Original_RecipeName, global::System.Nullable<double> Original_Quality, string Original_Glass, string Original_Client) {
+            return this.Update(Original_Id, RecipeName, Quality, Glass, Client, Original_Id, Original_RecipeName, Original_Quality, Original_Glass, Original_Client);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class GlassesTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public GlassesTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Glasses";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("GlassName", "GlassName");
+            tableMapping.ColumnMappings.Add("Client", "Client");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Glasses] WHERE (([Id] = @Original_Id) AND ([GlassName] = @Orig" +
+                "inal_GlassName) AND ([Client] = @Original_Client))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GlassName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GlassName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Client", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Client", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Glasses] ([Id], [GlassName], [Client]) VALUES (@Id, @GlassName" +
+                ", @Client);\r\nSELECT Id, GlassName, Client FROM Glasses WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GlassName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GlassName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Client", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Client", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Glasses] SET [Id] = @Id, [GlassName] = @GlassName, [Client] = @Clie" +
+                "nt WHERE (([Id] = @Original_Id) AND ([GlassName] = @Original_GlassName) AND ([Cl" +
+                "ient] = @Original_Client));\r\nSELECT Id, GlassName, Client FROM Glasses WHERE (Id" +
+                " = @Id)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GlassName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GlassName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Client", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Client", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GlassName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GlassName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Client", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Client", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::GlassRecipeAssistant.Properties.Settings.Default.GlassRecipesDatabaseConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Id, GlassName, Client FROM dbo.Glasses";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(GlassRecipesDatabaseDataSet.GlassesDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual GlassRecipesDatabaseDataSet.GlassesDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            GlassRecipesDatabaseDataSet.GlassesDataTable dataTable = new GlassRecipesDatabaseDataSet.GlassesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(GlassRecipesDatabaseDataSet.GlassesDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(GlassRecipesDatabaseDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Glasses");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_Id, string Original_GlassName, string Original_Client) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
+            if ((Original_GlassName == null)) {
+                throw new global::System.ArgumentNullException("Original_GlassName");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_GlassName));
+            }
+            if ((Original_Client == null)) {
+                throw new global::System.ArgumentNullException("Original_Client");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Client));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int Id, string GlassName, string Client) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
+            if ((GlassName == null)) {
+                throw new global::System.ArgumentNullException("GlassName");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(GlassName));
+            }
+            if ((Client == null)) {
+                throw new global::System.ArgumentNullException("Client");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Client));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int Id, string GlassName, string Client, int Original_Id, string Original_GlassName, string Original_Client) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
+            if ((GlassName == null)) {
+                throw new global::System.ArgumentNullException("GlassName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(GlassName));
+            }
+            if ((Client == null)) {
+                throw new global::System.ArgumentNullException("Client");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Client));
+            }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Id));
+            if ((Original_GlassName == null)) {
+                throw new global::System.ArgumentNullException("Original_GlassName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_GlassName));
+            }
+            if ((Original_Client == null)) {
+                throw new global::System.ArgumentNullException("Original_Client");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Client));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string GlassName, string Client, int Original_Id, string Original_GlassName, string Original_Client) {
+            return this.Update(Original_Id, GlassName, Client, Original_Id, Original_GlassName, Original_Client);
         }
     }
     
@@ -1792,9 +2565,11 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
         
         private UpdateOrderOption _updateOrder;
         
-        private GlassesTableAdapter _glassesTableAdapter;
+        private ClientsTableAdapter _clientsTableAdapter;
         
         private RecipesTableAdapter _recipesTableAdapter;
+        
+        private GlassesTableAdapter _glassesTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -1816,12 +2591,12 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public GlassesTableAdapter GlassesTableAdapter {
+        public ClientsTableAdapter ClientsTableAdapter {
             get {
-                return this._glassesTableAdapter;
+                return this._clientsTableAdapter;
             }
             set {
-                this._glassesTableAdapter = value;
+                this._clientsTableAdapter = value;
             }
         }
         
@@ -1836,6 +2611,20 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
             }
             set {
                 this._recipesTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public GlassesTableAdapter GlassesTableAdapter {
+            get {
+                return this._glassesTableAdapter;
+            }
+            set {
+                this._glassesTableAdapter = value;
             }
         }
         
@@ -1858,13 +2647,17 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._glassesTableAdapter != null) 
-                            && (this._glassesTableAdapter.Connection != null))) {
-                    return this._glassesTableAdapter.Connection;
+                if (((this._clientsTableAdapter != null) 
+                            && (this._clientsTableAdapter.Connection != null))) {
+                    return this._clientsTableAdapter.Connection;
                 }
                 if (((this._recipesTableAdapter != null) 
                             && (this._recipesTableAdapter.Connection != null))) {
                     return this._recipesTableAdapter.Connection;
+                }
+                if (((this._glassesTableAdapter != null) 
+                            && (this._glassesTableAdapter.Connection != null))) {
+                    return this._glassesTableAdapter.Connection;
                 }
                 return null;
             }
@@ -1879,10 +2672,13 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._glassesTableAdapter != null)) {
+                if ((this._clientsTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._recipesTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._glassesTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -1896,12 +2692,12 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateUpdatedRows(GlassRecipesDatabaseDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._glassesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Glasses.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._clientsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Clients.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._glassesTableAdapter.Update(updatedRows));
+                    result = (result + this._clientsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -1911,6 +2707,15 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._recipesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._glassesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Glasses.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._glassesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -1924,11 +2729,11 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateInsertedRows(GlassRecipesDatabaseDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._glassesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Glasses.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._clientsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Clients.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._glassesTableAdapter.Update(addedRows));
+                    result = (result + this._clientsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -1937,6 +2742,14 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._recipesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._glassesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Glasses.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._glassesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -1950,6 +2763,14 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateDeletedRows(GlassRecipesDatabaseDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._glassesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Glasses.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._glassesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._recipesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Recipes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -1958,11 +2779,11 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._glassesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Glasses.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._clientsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Clients.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._glassesTableAdapter.Update(deletedRows));
+                    result = (result + this._clientsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -2005,12 +2826,16 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._glassesTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._glassesTableAdapter.Connection) == false))) {
+            if (((this._clientsTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._clientsTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("由 TableAdapterManager 管理的所有 TableAdapter 必须使用相同的连接字符串。");
             }
             if (((this._recipesTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._recipesTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("由 TableAdapterManager 管理的所有 TableAdapter 必须使用相同的连接字符串。");
+            }
+            if (((this._glassesTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._glassesTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("由 TableAdapterManager 管理的所有 TableAdapter 必须使用相同的连接字符串。");
             }
             global::System.Data.IDbConnection workConnection = this.Connection;
@@ -2044,13 +2869,13 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._glassesTableAdapter != null)) {
-                    revertConnections.Add(this._glassesTableAdapter, this._glassesTableAdapter.Connection);
-                    this._glassesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._glassesTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._glassesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._glassesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._glassesTableAdapter.Adapter);
+                if ((this._clientsTableAdapter != null)) {
+                    revertConnections.Add(this._clientsTableAdapter, this._clientsTableAdapter.Connection);
+                    this._clientsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._clientsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._clientsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._clientsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._clientsTableAdapter.Adapter);
                     }
                 }
                 if ((this._recipesTableAdapter != null)) {
@@ -2060,6 +2885,15 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
                     if (this._recipesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._recipesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._recipesTableAdapter.Adapter);
+                    }
+                }
+                if ((this._glassesTableAdapter != null)) {
+                    revertConnections.Add(this._glassesTableAdapter, this._glassesTableAdapter.Connection);
+                    this._glassesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._glassesTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._glassesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._glassesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._glassesTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -2120,13 +2954,17 @@ SELECT Id, RecipeName, Quality, Owner FROM Recipes WHERE (Id = @Id)";
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._glassesTableAdapter != null)) {
-                    this._glassesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._glassesTableAdapter]));
-                    this._glassesTableAdapter.Transaction = null;
+                if ((this._clientsTableAdapter != null)) {
+                    this._clientsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._clientsTableAdapter]));
+                    this._clientsTableAdapter.Transaction = null;
                 }
                 if ((this._recipesTableAdapter != null)) {
                     this._recipesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._recipesTableAdapter]));
                     this._recipesTableAdapter.Transaction = null;
+                }
+                if ((this._glassesTableAdapter != null)) {
+                    this._glassesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._glassesTableAdapter]));
+                    this._glassesTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

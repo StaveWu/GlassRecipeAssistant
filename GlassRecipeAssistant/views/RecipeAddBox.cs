@@ -15,14 +15,16 @@ namespace RecipeAssistant
     {
         private IGlassRecipesModel model;
         private string glassName;
+        private string clientName;
 
-        public RecipeAddBox(IGlassRecipesModel model, string glassName)
+        public RecipeAddBox(IGlassRecipesModel model, string glassName, string clientName)
         {
             InitializeComponent();
             label3.Visible = false;
             label4.Visible = false;
             this.model = model;
             this.glassName = glassName;
+            this.clientName = clientName;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -46,14 +48,14 @@ namespace RecipeAssistant
             {
                 textBox2.BackColor = Color.White;
                 label3.Visible = false;
-                model.addRecipe(glassName, textBox1.Text, Convert.ToDouble(textBox2.Text));
+                model.addRecipe(clientName, glassName, textBox1.Text, Convert.ToDouble(textBox2.Text));
                 this.Close();
             }
         }
 
         private bool isDuplicate(string text)
         {
-            return model.findRecipes(glassName).ContainsKey(text);
+            return model.findRecipes(clientName, glassName).ContainsKey(text);
         }
 
         private void button1_Click(object sender, EventArgs e)
