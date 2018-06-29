@@ -31,11 +31,11 @@ namespace RecipeAssistant.models
         List<string> findGlasses(string clientName);
 
 
-        void addRecipe(string clientName, string glassName, string recipeName, double quality);
+        void addRecipe(string clientName, string glassName, int powderId, double quality);
 
-        void deleteRecipe(string clientName, string glassName, string recipeName);
+        void deleteRecipe(string clientName, string glassName, int powderId);
 
-        Dictionary<string, double> findRecipes(string clientName, string glassName);
+        Dictionary<int, double> findRecipes(string clientName, string glassName);
 
 
         bool containsClient(string clientName);

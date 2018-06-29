@@ -136,6 +136,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "PassWordBox";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PassWordBox";
             this.ResumeLayout(false);
             this.PerformLayout();

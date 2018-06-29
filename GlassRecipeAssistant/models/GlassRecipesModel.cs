@@ -11,7 +11,7 @@ namespace RecipeAssistant.models
 {
     class GlassRecipesModel : IGlassRecipesModel
     {
-        // 两个事件
+        // 事件
         public event ClientAddedHandler ClientChanged;
         public event GlassAddedHandler GlassChanged;
         public event RecipeAddedHandler RecipeChanged;
@@ -57,10 +57,10 @@ namespace RecipeAssistant.models
             GlassChanged();   // 通知更新了
         }
 
-        public void addRecipe(string clientName, string glassName, string recipeName, double quality)
+        public void addRecipe(string clientName, string glassName, int powderId, double quality)
         {
             DataRow newRow = rdt.NewRow();
-            newRow["RecipeName"] = recipeName;
+            newRow["PowderId"] = powderId;
             newRow["Quality"] = quality;
             newRow["Glass"] = glassName;
             newRow["Client"] = clientName;
@@ -151,9 +151,9 @@ namespace RecipeAssistant.models
             }
         }
 
-        public void deleteRecipe(string clientName, string glassName, string recipeName)
+        public void deleteRecipe(string clientName, string glassName, int powderId)
         {
-            String filter = String.Format("Client = '{0}' and Glass = '{1}' and RecipeName = '{2}'", clientName, glassName, recipeName);
+            String filter = String.Format("Client = '{0}' and Glass = '{1}' and PowderId = '{2}'", clientName, glassName, powderId);
             DataRow[] rows = rdt.Select(filter);
             foreach (DataRow ele in rows)
             {
@@ -193,16 +193,16 @@ namespace RecipeAssistant.models
 
         }
 
-        public Dictionary<string, double> findRecipes(string clientName, string glassName)
+        public Dictionary<int, double> findRecipes(string clientName, string glassName)
         {
-            Dictionary<string, double> res = new Dictionary<string, double>();
+            Dictionary<int, double> res = new Dictionary<int, double>();
             try
             {
                 String filter = String.Format("Client = '{0}' and Glass = '{1}'", clientName, glassName);
                 DataRow[] rows = rdt.Select(filter);
                 foreach (DataRow row in rows)
                 {
-                    res.Add(row["RecipeName"] as string, Convert.ToDouble(row["Quality"]));
+                    res.Add(Convert.ToInt32(row["PowderId"]), Convert.ToDouble(row["Quality"]));
                 }
                 return res;
             }

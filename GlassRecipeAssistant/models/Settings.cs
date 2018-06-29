@@ -15,6 +15,7 @@ namespace RecipeAssistant.models
         private const string portNameXpath = "//serialPort/portName";
         private const string errorThresholdPath = "//errorThreshold";
         private const string passwordXPath = "//password";
+        private const string rawMaterialQualityPath = "//rawMaterialQuality";
 
         public static string BuadRate
         {
@@ -60,6 +61,18 @@ namespace RecipeAssistant.models
             set
             {
                 xmlParser.set(passwordXPath, value);
+            }
+        }
+
+        public static double RawMaterialQuality
+        {
+            get
+            {
+                return Convert.ToDouble(xmlParser.get(rawMaterialQualityPath));
+            }
+            set
+            {
+                xmlParser.set(rawMaterialQualityPath, "" + value);
             }
         }
     }

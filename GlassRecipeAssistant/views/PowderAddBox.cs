@@ -1,5 +1,4 @@
-﻿using RecipeAssistant;
-using RecipeAssistant.models;
+﻿using GlassRecipeAssistant.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,38 +11,33 @@ using System.Windows.Forms;
 
 namespace GlassRecipeAssistant.views
 {
-    public partial class QualityEnterBox : Form
+    public partial class PowderAddBox : Form
     {
-        private MainForm mainForm;
+        private IPowderModel model;
 
-        public QualityEnterBox(MainForm form)
+        public PowderAddBox(IPowderModel model)
         {
             InitializeComponent();
-            label2.Visible = false;
 
-            textBox1.Text = "" + Settings.RawMaterialQuality;
-
-            mainForm = form;
+            this.model = model;
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            if (!RegexUtils.isNumber(textBox1.Text))
+        {// 确定按钮
+            string text = textBox1.Text;
+            if (text.Equals(""))
             {
-                textBox1.BackColor = Color.Yellow;
                 label2.Visible = true;
             }
             else
             {
-                Settings.RawMaterialQuality = Convert.ToDouble(textBox1.Text);
-                mainForm.loadRecipes();
-                mainForm.refreshRecipeInfoLabels();
+                model.addPowder(text);
                 this.Close();
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
+        {// 取消按钮
             this.Close();
         }
     }

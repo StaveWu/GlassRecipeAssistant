@@ -1,4 +1,5 @@
-﻿using RecipeAssistant.models;
+﻿using GlassRecipeAssistant.models;
+using RecipeAssistant.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,18 +14,25 @@ namespace RecipeAssistant
 {
     public partial class RecipeAddBox : Form
     {
-        private IGlassRecipesModel model;
+        private IGlassRecipesModel grModel;
+        private IPowderModel powderModel;
         private string glassName;
         private string clientName;
 
-        public RecipeAddBox(IGlassRecipesModel model, string glassName, string clientName)
+        public RecipeAddBox(IGlassRecipesModel grModel, IPowderModel powderModel, string glassName, string clientName)
         {
             InitializeComponent();
             label3.Visible = false;
             label4.Visible = false;
-            this.model = model;
+            this.grModel = grModel;
+            this.powderModel = powderModel;
             this.glassName = glassName;
             this.clientName = clientName;
+
+            foreach (string ele in powderModel.findPowders())
+            {
+                comboBox1.Items.Add(ele);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -39,23 +47,23 @@ namespace RecipeAssistant
                 textBox2.BackColor = Color.Yellow;
                 label3.Visible = true;
             }
-            else if (isDuplicate(textBox1.Text))
+            else if (isDuplicate(powderModel.getPowderId(comboBox1.SelectedIndex)))
             {
-                textBox1.BackColor = Color.Yellow;
+                comboBox1.BackColor = Color.Yellow;
                 label4.Visible = true;
             }
             else
             {
                 textBox2.BackColor = Color.White;
                 label3.Visible = false;
-                model.addRecipe(clientName, glassName, textBox1.Text, Convert.ToDouble(textBox2.Text));
+                grModel.addRecipe(clientName, glassName, powderModel.getPowderId(comboBox1.SelectedIndex), Convert.ToDouble(textBox2.Text));
                 this.Close();
             }
         }
 
-        private bool isDuplicate(string text)
+        private bool isDuplicate(int powderId)
         {
-            return model.findRecipes(clientName, glassName).ContainsKey(text);
+            return grModel.findRecipes(clientName, glassName).ContainsKey(powderId);
         }
 
         private void button1_Click(object sender, EventArgs e)

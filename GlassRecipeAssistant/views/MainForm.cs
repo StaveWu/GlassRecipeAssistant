@@ -1,4 +1,5 @@
-﻿using GlassRecipeAssistant.views;
+﻿using GlassRecipeAssistant.models;
+using GlassRecipeAssistant.views;
 using RecipeAssistant.models;
 using RecipeAssistant.views;
 using System;
@@ -23,14 +24,10 @@ namespace RecipeAssistant
         /// </summary>
         private double realTimeQuality;
 
-        /// <summary>
-        /// 原料质量
-        /// </summary>
-        private double rawMaterialQuality = 10;
-
         // model
         private SerialPort serialPort;
         private IGlassRecipesModel grModel;
+        private IPowderModel powderModel;
         private ILogger logger;
 
         private IRecipeQualityCalculateStrategy recipeQualityStrategy;
@@ -41,15 +38,20 @@ namespace RecipeAssistant
         /// </summary>
         private ListBoxItemInfo currentSelectedItem;
 
-        public MainForm()
+        private Form adamForm;
+
+        public MainForm(Form adamForm)
         {
             InitializeComponent();
+
+            this.adamForm = adamForm;
 
             //CheckForIllegalCrossThreadCalls = false; // 防止串口回调报错
 
             // 初始化model
             serialPort = new SerialPort();
             grModel = new GlassRecipesModel();
+            powderModel = new PowderModel();
             logger = new TextLogger();
 
             recipeQualityStrategy = new ZeroQualityStrategy(realTimeQuality);
@@ -185,14 +187,8 @@ namespace RecipeAssistant
                 return;
             }
 
-            Dictionary<string, double> recipes = grModel.findRecipes(getSelectedClientName(), getSelectedGlassName());
-            if (recipes != null)
-            {
-                foreach (string ele in recipes.Keys)
-                {
-                    listBox1.Items.Add(new ListBoxItemInfo(ele, recipes[ele]));
-                }
-            }
+            Dictionary<int, double> recipes = grModel.findRecipes(getSelectedClientName(), getSelectedGlassName());
+            fillRecipes(recipes);
 
         }
 
@@ -232,54 +228,8 @@ namespace RecipeAssistant
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {// 镜片切换
             loadRecipes();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {// 添加客户按钮
-            new ClientAddBox(grModel).Show();
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {// 删除客户按钮
-            if (checkClientSelected())
-            {
-                grModel.deleteClient(getSelectedClientName());
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {// 添加镜片按钮
-            if (checkClientSelected())
-            {
-                new GlassAddBox(grModel, getSelectedClientName()).Show();
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {// 删除镜片按钮
-            if (checkClientSelected() && checkGlassSelected())
-            {
-                grModel.deleteGlass(getSelectedGlassName(), getSelectedClientName());
-            }
-            
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {// 配方添加按钮
-            if (checkClientSelected() && checkGlassSelected())
-            {
-                new RecipeAddBox(grModel, getSelectedGlassName(), getSelectedClientName()).Show();
-            }
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {// 配方删除按钮
-            if (checkClientSelected() && checkGlassSelected() && checkRecipeSelected())
-            {
-                grModel.deleteRecipe(getSelectedClientName(), getSelectedGlassName(), ((ListBoxItemInfo)listBox1.SelectedItem).RecipeName);
-            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -302,8 +252,7 @@ namespace RecipeAssistant
                 //Console.WriteLine(itemInfo.RecipeName + " zero " + itemInfo.CurrentQuality);
                 recipeQualityStrategy = new ZeroQualityStrategy(realTimeQuality);
             }
-            label7.Text = "" + itemInfo.StandardQuality + "g";
-            label8.Text = itemInfo.RecipeName;
+            refreshRecipeInfoLabels();
 
             currentSelectedItem = itemInfo;
 
@@ -484,16 +433,21 @@ namespace RecipeAssistant
             weighIn();
         }
 
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            adamForm.Close();
+        }
+
+        private void 原料质量ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new QualityEnterBox(this).Show();
+        }
+
 
         #region 菜单栏
         private void 串口ToolStripMenuItem_Click(object sender, EventArgs e)
         {// 菜单栏的通讯-串口
             new PortSettingBox().Show();
-        }
-
-        private void 误差设置ToolStripMenuItem_Click(object sender, EventArgs e)
-        {// 菜单栏的误差设置项
-            new ErrorThresholdBox().Show();
         }
 
         private void 版本ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -660,11 +614,33 @@ namespace RecipeAssistant
             return false;
         }
 
+        private void fillRecipes(Dictionary<int, double> recipes)
+        {
+            clearRecipesCache();
+            if (recipes != null)
+            {
+                double rate = Settings.RawMaterialQuality / (double)10;
+                foreach (int ele in recipes.Keys)
+                {
+                    listBox1.Items.Add(new ListBoxItemInfo(powderModel.getPowderName(ele), recipes[ele] * rate));
+                }
+            }
+        }
+
+        public void refreshRecipeInfoLabels()
+        {
+            if (nonRecipeSelected())
+            {
+                label7.Text = "-";
+                label8.Text = "-";
+                return;
+            }
+            label7.Text = "" + getSelectedRecipes().StandardQuality + "g";
+            label8.Text = getSelectedRecipes().RecipeName;
+        }
+
         #endregion
 
-        private void 密码ToolStripMenuItem_Click(object sender, EventArgs e)
-        {// 修改密码
-            new PassWordBox().Show();
-        }
+
     }
 }

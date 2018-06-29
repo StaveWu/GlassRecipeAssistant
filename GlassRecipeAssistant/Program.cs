@@ -1,4 +1,5 @@
-﻿using RecipeAssistant;
+﻿using GlassRecipeAssistant.views;
+using RecipeAssistant;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,8 @@ namespace GlassRecipeAssistant
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            //Application.Run(new MainForm());
+            Application.Run(new LoginBox());
         }
     }
 }

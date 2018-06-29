@@ -116,6 +116,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlassRecipesDatabaseDataSet.cs">
+      <DependentUpon>GlassRecipesDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="GlassRecipesDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -125,6 +128,8 @@
     <Compile Include="models\GlassRecipesModel.cs" />
     <Compile Include="models\IGlassRecipesModel.cs" />
     <Compile Include="models\ILogger.cs" />
+    <Compile Include="models\IPowderModel.cs" />
+    <Compile Include="models\PowderModel.cs" />
     <Compile Include="models\Settings.cs" />
     <Compile Include="models\TextLogger.cs" />
     <Compile Include="models\XmlParser.cs" />
@@ -150,6 +155,12 @@
     <Compile Include="views\GlassAddBox.Designer.cs">
       <DependentUpon>GlassAddBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\ManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\ManagerForm.Designer.cs">
+      <DependentUpon>ManagerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\LoginBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +184,18 @@
     </Compile>
     <Compile Include="views\PortSettingBox.Designer.cs">
       <DependentUpon>PortSettingBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\PowderAddBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\PowderAddBox.Designer.cs">
+      <DependentUpon>PowderAddBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\PowderBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\PowderBox.Designer.cs">
+      <DependentUpon>PowderBox.cs</DependentUpon>
     </Compile>
     <Compile Include="views\QualityEnterBox.cs">
       <SubType>Form</SubType>
@@ -214,6 +237,9 @@
     <EmbeddedResource Include="views\ErrorThresholdBox.resx">
       <DependentUpon>ErrorThresholdBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\ManagerForm.resx">
+      <DependentUpon>ManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\LoginBox.resx">
       <DependentUpon>LoginBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,11 +249,23 @@
     <EmbeddedResource Include="views\PassWordBox.resx">
       <DependentUpon>PassWordBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\PowderAddBox.resx">
+      <DependentUpon>PowderAddBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\PowderBox.resx">
+      <DependentUpon>PowderBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\QualityEnterBox.resx">
       <DependentUpon>QualityEnterBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\RecipeAddBox.resx">
+      <DependentUpon>RecipeAddBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\RecipesResultBox.resx">
       <DependentUpon>RecipesResultBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\VersionBox.resx">
+      <DependentUpon>VersionBox.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GlassRecipesDatabaseDataSet.xsc">
       <DependentUpon>GlassRecipesDatabaseDataSet.xsd</DependentUpon>

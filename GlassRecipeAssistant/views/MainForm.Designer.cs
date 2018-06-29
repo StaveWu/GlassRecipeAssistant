@@ -34,22 +34,17 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.连接ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.串口ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.误差设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.版本ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.circularProgressBar1 = new CircularProgressBar.CircularProgressBar();
@@ -66,28 +61,25 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.原料质量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox1
             // 
             this.comboBox1.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 46);
+            this.comboBox1.Location = new System.Drawing.Point(134, 89);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(211, 38);
+            this.comboBox1.Size = new System.Drawing.Size(242, 38);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -100,7 +92,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1097, 37);
+            this.menuStrip1.Size = new System.Drawing.Size(958, 37);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -108,8 +100,7 @@
             // 
             this.连接ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.串口ToolStripMenuItem,
-            this.误差设置ToolStripMenuItem,
-            this.密码ToolStripMenuItem});
+            this.原料质量ToolStripMenuItem});
             this.连接ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.10084F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.连接ToolStripMenuItem.Name = "连接ToolStripMenuItem";
             this.连接ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -119,16 +110,9 @@
             // 
             this.串口ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.10084F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.串口ToolStripMenuItem.Name = "串口ToolStripMenuItem";
-            this.串口ToolStripMenuItem.Size = new System.Drawing.Size(170, 32);
+            this.串口ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
             this.串口ToolStripMenuItem.Text = "串口设置";
             this.串口ToolStripMenuItem.Click += new System.EventHandler(this.串口ToolStripMenuItem_Click);
-            // 
-            // 误差设置ToolStripMenuItem
-            // 
-            this.误差设置ToolStripMenuItem.Name = "误差设置ToolStripMenuItem";
-            this.误差设置ToolStripMenuItem.Size = new System.Drawing.Size(170, 32);
-            this.误差设置ToolStripMenuItem.Text = "误差设置";
-            this.误差设置ToolStripMenuItem.Click += new System.EventHandler(this.误差设置ToolStripMenuItem_Click);
             // 
             // 关于ToolStripMenuItem
             // 
@@ -142,7 +126,7 @@
             // 版本ToolStripMenuItem
             // 
             this.版本ToolStripMenuItem.Name = "版本ToolStripMenuItem";
-            this.版本ToolStripMenuItem.Size = new System.Drawing.Size(130, 32);
+            this.版本ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
             this.版本ToolStripMenuItem.Text = "版本";
             this.版本ToolStripMenuItem.Click += new System.EventHandler(this.版本ToolStripMenuItem_Click);
             // 
@@ -191,28 +175,6 @@
             this.label7.Text = "-";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(15, 122);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(211, 48);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "添加";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(15, 176);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(211, 48);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "删除";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // toolStripButton1
             // 
             this.toolStripButton1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.10084F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -232,7 +194,7 @@
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 37);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1097, 34);
+            this.toolStrip1.Size = new System.Drawing.Size(958, 34);
             this.toolStrip1.TabIndex = 13;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -246,51 +208,30 @@
             this.toolStripButton2.Text = "断开";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(15, 365);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(272, 48);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "添加";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(15, 419);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(272, 48);
-            this.button6.TabIndex = 16;
-            this.button6.Text = "删除";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 319);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(248, 245);
-            this.groupBox1.TabIndex = 17;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "镜片型号";
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.comboBox2);
             this.groupBox2.Controls.Add(this.listBox1);
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox2.Location = new System.Drawing.Point(266, 76);
+            this.groupBox2.Location = new System.Drawing.Point(12, 76);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(304, 488);
+            this.groupBox2.Size = new System.Drawing.Size(395, 488);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "配方";
+            this.groupBox2.Text = "类别";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(134, 40);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(242, 38);
+            this.comboBox2.TabIndex = 0;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // listBox1
             // 
@@ -299,9 +240,9 @@
             this.listBox1.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 35;
-            this.listBox1.Location = new System.Drawing.Point(15, 43);
+            this.listBox1.Location = new System.Drawing.Point(134, 163);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(272, 284);
+            this.listBox1.Size = new System.Drawing.Size(242, 319);
             this.listBox1.TabIndex = 17;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox1_DrawItem);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -319,7 +260,7 @@
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox3.Location = new System.Drawing.Point(576, 76);
+            this.groupBox3.Location = new System.Drawing.Point(426, 77);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(505, 488);
             this.groupBox3.TabIndex = 19;
@@ -356,6 +297,7 @@
             this.circularProgressBar1.TabIndex = 16;
             this.circularProgressBar1.Text = "0%";
             this.circularProgressBar1.TextMargin = new System.Windows.Forms.Padding(0);
+            this.circularProgressBar1.Value = 68;
             // 
             // label8
             // 
@@ -430,14 +372,14 @@
             this.toolStripStatusLabel5});
             this.statusStrip1.Location = new System.Drawing.Point(0, 568);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1097, 32);
+            this.statusStrip1.Size = new System.Drawing.Size(958, 32);
             this.statusStrip1.TabIndex = 12;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(815, 27);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(576, 27);
             this.toolStripStatusLabel3.Spring = true;
             // 
             // toolStripStatusLabel4
@@ -462,64 +404,47 @@
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // groupBox4
+            // 原料质量ToolStripMenuItem
             // 
-            this.groupBox4.Controls.Add(this.button9);
-            this.groupBox4.Controls.Add(this.button8);
-            this.groupBox4.Controls.Add(this.comboBox2);
-            this.groupBox4.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox4.Location = new System.Drawing.Point(12, 76);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(248, 237);
-            this.groupBox4.TabIndex = 20;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "客户";
+            this.原料质量ToolStripMenuItem.Name = "原料质量ToolStripMenuItem";
+            this.原料质量ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
+            this.原料质量ToolStripMenuItem.Text = "原料质量";
+            this.原料质量ToolStripMenuItem.Click += new System.EventHandler(this.原料质量ToolStripMenuItem_Click);
             // 
-            // button9
+            // label2
             // 
-            this.button9.Location = new System.Drawing.Point(15, 162);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(211, 48);
-            this.button9.TabIndex = 1;
-            this.button9.Text = "删除";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 31);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "客户:";
             // 
-            // button8
+            // label5
             // 
-            this.button8.Location = new System.Drawing.Point(15, 108);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(211, 48);
-            this.button8.TabIndex = 1;
-            this.button8.Text = "添加";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 92);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(116, 31);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "镜片型号:";
             // 
-            // comboBox2
+            // label9
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(15, 43);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(211, 38);
-            this.comboBox2.TabIndex = 0;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
-            // 
-            // 密码ToolStripMenuItem
-            // 
-            this.密码ToolStripMenuItem.Name = "密码ToolStripMenuItem";
-            this.密码ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
-            this.密码ToolStripMenuItem.Text = "密码修改";
-            this.密码ToolStripMenuItem.Click += new System.EventHandler(this.密码ToolStripMenuItem_Click);
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 163);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(68, 31);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "配方:";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1097, 600);
-            this.Controls.Add(this.groupBox4);
+            this.ClientSize = new System.Drawing.Size(958, 600);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -530,17 +455,17 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "配方辅助工具";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -557,14 +482,9 @@
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripMenuItem 版本ToolStripMenuItem;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label4;
@@ -575,7 +495,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.ToolStripMenuItem 误差设置ToolStripMenuItem;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
@@ -584,11 +503,11 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
         private CircularProgressBar.CircularProgressBar circularProgressBar1;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ToolStripMenuItem 密码ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 原料质量ToolStripMenuItem;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label2;
     }
 }
 
