@@ -45,8 +45,8 @@
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.密码修改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.误差限ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.glassRecipesDatabaseDataSet = new GlassRecipeAssistant.GlassRecipesDatabaseDataSet();
             this.色粉添加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.glassRecipesDatabaseDataSet = new GlassRecipeAssistant.GlassRecipesDatabaseDataSet();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -221,27 +221,27 @@
             // 
             this.密码修改ToolStripMenuItem.Name = "密码修改ToolStripMenuItem";
             this.密码修改ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
-            this.密码修改ToolStripMenuItem.Text = "密码修改";
+            this.密码修改ToolStripMenuItem.Text = "修改密码";
             this.密码修改ToolStripMenuItem.Click += new System.EventHandler(this.密码修改ToolStripMenuItem_Click);
             // 
             // 误差限ToolStripMenuItem
             // 
             this.误差限ToolStripMenuItem.Name = "误差限ToolStripMenuItem";
             this.误差限ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
-            this.误差限ToolStripMenuItem.Text = "误差设置";
+            this.误差限ToolStripMenuItem.Text = "设定误差";
             this.误差限ToolStripMenuItem.Click += new System.EventHandler(this.误差限ToolStripMenuItem_Click);
-            // 
-            // glassRecipesDatabaseDataSet
-            // 
-            this.glassRecipesDatabaseDataSet.DataSetName = "GlassRecipesDatabaseDataSet";
-            this.glassRecipesDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // 色粉添加ToolStripMenuItem
             // 
             this.色粉添加ToolStripMenuItem.Name = "色粉添加ToolStripMenuItem";
             this.色粉添加ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
-            this.色粉添加ToolStripMenuItem.Text = "色粉添加";
+            this.色粉添加ToolStripMenuItem.Text = "添加色粉";
             this.色粉添加ToolStripMenuItem.Click += new System.EventHandler(this.色粉添加ToolStripMenuItem_Click);
+            // 
+            // glassRecipesDatabaseDataSet
+            // 
+            this.glassRecipesDatabaseDataSet.DataSetName = "GlassRecipesDatabaseDataSet";
+            this.glassRecipesDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // ManagerForm
             // 
@@ -257,6 +257,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "ManagerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "配方辅助工具（管理员）";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GlassRecipeManager_FormClosing);
             this.groupBox4.ResumeLayout(false);

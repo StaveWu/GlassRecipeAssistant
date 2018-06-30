@@ -34,6 +34,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.连接ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.串口ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.原料质量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.版本ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,6 +45,9 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -61,10 +65,8 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.原料质量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.历史记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -88,11 +90,12 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.连接ToolStripMenuItem,
+            this.查看ToolStripMenuItem,
             this.关于ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(958, 37);
+            this.menuStrip1.Size = new System.Drawing.Size(958, 38);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -103,7 +106,7 @@
             this.原料质量ToolStripMenuItem});
             this.连接ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.10084F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.连接ToolStripMenuItem.Name = "连接ToolStripMenuItem";
-            this.连接ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
+            this.连接ToolStripMenuItem.Size = new System.Drawing.Size(64, 32);
             this.连接ToolStripMenuItem.Text = "设置";
             // 
             // 串口ToolStripMenuItem
@@ -114,13 +117,20 @@
             this.串口ToolStripMenuItem.Text = "串口设置";
             this.串口ToolStripMenuItem.Click += new System.EventHandler(this.串口ToolStripMenuItem_Click);
             // 
+            // 原料质量ToolStripMenuItem
+            // 
+            this.原料质量ToolStripMenuItem.Name = "原料质量ToolStripMenuItem";
+            this.原料质量ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
+            this.原料质量ToolStripMenuItem.Text = "原料质量";
+            this.原料质量ToolStripMenuItem.Click += new System.EventHandler(this.原料质量ToolStripMenuItem_Click);
+            // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.版本ToolStripMenuItem});
             this.关于ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.10084F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(64, 32);
             this.关于ToolStripMenuItem.Text = "关于";
             // 
             // 版本ToolStripMenuItem
@@ -160,7 +170,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(227, 102);
             this.button4.TabIndex = 11;
-            this.button4.Text = "下一个配方";
+            this.button4.Text = "下一个色粉";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -192,7 +202,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripButton2});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 37);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 38);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(958, 34);
             this.toolStrip1.TabIndex = 13;
@@ -223,6 +233,33 @@
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "类别";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 163);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(68, 31);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "配方:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 92);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(116, 31);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "镜片型号:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 31);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "客户:";
             // 
             // comboBox2
             // 
@@ -316,7 +353,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(116, 31);
             this.label6.TabIndex = 14;
-            this.label6.Text = "当前配方:";
+            this.label6.Text = "当前色粉:";
             // 
             // button7
             // 
@@ -335,7 +372,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(164, 31);
             this.label4.TabIndex = 12;
-            this.label4.Text = "配方当前质量:";
+            this.label4.Text = "色粉当前质量:";
             // 
             // label1
             // 
@@ -344,7 +381,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(164, 31);
             this.label1.TabIndex = 12;
-            this.label1.Text = "配方标准质量:";
+            this.label1.Text = "色粉标准质量:";
             // 
             // toolStripStatusLabel1
             // 
@@ -379,7 +416,7 @@
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(576, 27);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(676, 27);
             this.toolStripStatusLabel3.Spring = true;
             // 
             // toolStripStatusLabel4
@@ -404,39 +441,21 @@
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // 原料质量ToolStripMenuItem
+            // 查看ToolStripMenuItem
             // 
-            this.原料质量ToolStripMenuItem.Name = "原料质量ToolStripMenuItem";
-            this.原料质量ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
-            this.原料质量ToolStripMenuItem.Text = "原料质量";
-            this.原料质量ToolStripMenuItem.Click += new System.EventHandler(this.原料质量ToolStripMenuItem_Click);
+            this.查看ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.历史记录ToolStripMenuItem});
+            this.查看ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.10084F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.查看ToolStripMenuItem.Name = "查看ToolStripMenuItem";
+            this.查看ToolStripMenuItem.Size = new System.Drawing.Size(66, 32);
+            this.查看ToolStripMenuItem.Text = "查看";
             // 
-            // label2
+            // 历史记录ToolStripMenuItem
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 31);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "客户:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 92);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 31);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "镜片型号:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 163);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 31);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "配方:";
+            this.历史记录ToolStripMenuItem.Name = "历史记录ToolStripMenuItem";
+            this.历史记录ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
+            this.历史记录ToolStripMenuItem.Text = "历史记录";
+            this.历史记录ToolStripMenuItem.Click += new System.EventHandler(this.历史记录ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -508,6 +527,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem 查看ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 历史记录ToolStripMenuItem;
     }
 }
 

@@ -8,6 +8,6 @@ namespace RecipeAssistant.models
 {
     interface ILogger
     {
-        void write(string glassName, Dictionary<string, double> recipes);
+        void write(string clientName, string glassName, Dictionary<string, double[]> recipes);
     }
 }

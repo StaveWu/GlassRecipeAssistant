@@ -331,12 +331,12 @@ namespace RecipeAssistant
 
         private void recordRecipesWeight()
         {// 记录当前各配方质量
-            Dictionary<string, double> recipes = new Dictionary<string, double>();
+            Dictionary<string, double[]> recipes = new Dictionary<string, double[]>();
             foreach (ListBoxItemInfo ele in listBox1.Items)
             {
-                recipes.Add(ele.RecipeName, ele.CurrentQuality);
+                recipes.Add(ele.RecipeName, new double[] { ele.CurrentQuality, ele.StandardQuality });
             }
-            logger.write(getSelectedGlassName(), recipes);
+            logger.write(getSelectedClientName(), getSelectedGlassName(), recipes);
         }
 
         private void listBox1_DrawItem(object sender, DrawItemEventArgs e)
@@ -639,8 +639,22 @@ namespace RecipeAssistant
             label8.Text = getSelectedRecipes().RecipeName;
         }
 
+
         #endregion
 
-
+        private void 历史记录ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (checkClientSelected() && checkGlassSelected())
+            {
+                try
+                {
+                    new HistoryBox(getSelectedClientName(), getSelectedGlassName()).Show();
+                }
+                 catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace GlassRecipeAssistant.views
 
         void hiddenPasswordEnterPane()
         {
-            this.Height = 285;
+            this.Height = 300;
             textBox1.Visible = false;
             label1.Visible = false;
         }

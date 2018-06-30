@@ -9,9 +9,10 @@ namespace RecipeAssistant.models
 {
     class TextLogger : ILogger
     {
-        public void write(string glassName, Dictionary<string, double> recipes)
+        public void write(string clientName, string glassName, 
+            Dictionary<string, double[]> recipes)
         {
-            string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "/log/" + glassName + ".txt";
+            string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "/log/" + clientName +"_" + glassName + ".txt";
 
             StreamWriter sw;
             if (!File.Exists(path))
@@ -34,7 +35,9 @@ namespace RecipeAssistant.models
             string data = "";
             foreach (string ele in recipes.Keys)
             {
-                data += recipes[ele];
+                data += recipes[ele][0];
+                data += "/";
+                data += recipes[ele][1];
                 data += "\t";
             }
             data += DateTime.Now.ToString();

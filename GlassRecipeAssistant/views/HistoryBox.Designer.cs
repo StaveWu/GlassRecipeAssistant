@@ -1,6 +1,6 @@
 ﻿namespace GlassRecipeAssistant.views
 {
-    partial class RecipesResultBox
+    partial class HistoryBox
     {
         /// <summary>
         /// Required designer variable.
@@ -28,35 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
-            // listBox1
+            // richTextBox1
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(28, 23);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(324, 364);
-            this.listBox1.TabIndex = 0;
+            this.richTextBox1.Location = new System.Drawing.Point(12, 12);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(526, 351);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
             // 
-            // RecipesResultBox
+            // HistoryBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(383, 422);
-            this.Controls.Add(this.listBox1);
+            this.ClientSize = new System.Drawing.Size(550, 375);
+            this.Controls.Add(this.richTextBox1);
             this.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "RecipesResultBox";
-            this.Text = "RecipesResultBox";
+            this.Name = "HistoryBox";
+            this.Text = "HistoryBox";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
