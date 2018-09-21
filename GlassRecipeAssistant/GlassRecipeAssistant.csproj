@@ -129,13 +129,13 @@
     <Compile Include="dao\IPowderRepository.cs" />
     <Compile Include="GlassRecipesDatabaseDataSet.cs">
       <DependentUpon>GlassRecipesDatabaseDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="GlassRecipesDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GlassRecipesDatabaseDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="IRecipeQualityCalculateStrategy.cs" />
     <Compile Include="models\GlassRecipePowderMapper.cs" />
@@ -273,17 +273,17 @@
     </EmbeddedResource>
     <None Include="GlassRecipesDatabaseDataSet.xsc">
       <DependentUpon>GlassRecipesDatabaseDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="GlassRecipesDatabaseDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>GlassRecipesDatabaseDataSet.Designer.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="GlassRecipesDatabaseDataSet.xss">
       <DependentUpon>GlassRecipesDatabaseDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
