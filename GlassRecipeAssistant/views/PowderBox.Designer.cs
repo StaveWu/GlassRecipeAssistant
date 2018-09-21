@@ -96,6 +96,7 @@
             this.Font = new System.Drawing.Font("微软雅黑", 9.07563F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "PowderBox";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PowderBox";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PowderBox_FormClosing);
             this.ResumeLayout(false);

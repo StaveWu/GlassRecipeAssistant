@@ -1,4 +1,7 @@
-﻿using GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters;
+﻿using GlassRecipeAssistant.dao;
+using GlassRecipeAssistant.dao.entities;
+using GlassRecipeAssistant.dao.implementions;
+using GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,65 +15,30 @@ namespace GlassRecipeAssistant.models
     {
         public event PowdersUpdateHandler PowdersUpdated;
 
-        private GlassRecipesDatabaseDataSet.PowdersDataTable pdt;
-        private PowdersTableAdapter pda;
+        private IPowderRepository<Powder> powderRepository;
 
         public PowderModel()
         {
-            pdt = new GlassRecipesDatabaseDataSet.PowdersDataTable();
-            pda = new PowdersTableAdapter();
-            pda.Fill(pdt);
+            powderRepository = RepositoryFactory.getPowderRepository();
         }
 
-        public void addPowder(string powderName)
+        public void addPowder(Powder powder)
         {
-            DataRow newRow = pdt.NewRow();
-            newRow["PowderName"] = powderName;
-            pdt.Rows.Add(newRow);
-            pda.Update(pdt);
+            powderRepository.save(powder);
             PowdersUpdated();
         }
 
-        public List<string> findPowders()
+        public List<Powder> findPowders()
         {
-            List<string> res = new List<string>();
-            foreach (DataRow ele in pdt.Rows)
-            {
-                res.Add(ele["PowderName"] as string);
-            }
-            return res;
+            return powderRepository.findAll();
         }
 
-        public void renamePowder(int index, string newName)
+        public void renamePowder(int id, string newName)
         {
-            int count = 0;
-            foreach (DataRow ele in pdt.Rows)
-            {
-                if (count == index)
-                {
-                    ele["PowderName"] = newName;
-                }
-                count++;
-            }
-            pda.Update(pdt);
+            Powder powder = new Powder(id, newName);
+            powderRepository.save(powder);
             PowdersUpdated();
         }
 
-        public int getPowderId(int selectedIndex)
-        {
-            return Convert.ToInt32(pdt.Rows[selectedIndex]["Id"]);
-        }
-
-        public string getPowderName(int powderId)
-        {
-            foreach (DataRow ele in pdt.Rows)
-            {
-                if (Convert.ToInt32(ele["Id"]) == powderId)
-                {
-                    return ele["PowderName"] as string;
-                }
-            }
-            return null;
-        }
     }
 }

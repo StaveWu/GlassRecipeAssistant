@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlassRecipeAssistant.dao.entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,11 @@ namespace GlassRecipeAssistant.models
 
     public interface IPowderModel
     {
-        void addPowder(string powderName);
+        void addPowder(Powder powder);
 
-        void renamePowder(int index, string newName);
+        void renamePowder(int id, string newName);
 
-        List<string> findPowders();
-
-        int getPowderId(int selectedIndex);
-
-        string getPowderName(int powderId);
+        List<Powder> findPowders();
 
         event PowdersUpdateHandler PowdersUpdated;
     }

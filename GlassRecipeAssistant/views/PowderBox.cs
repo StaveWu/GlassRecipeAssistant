@@ -1,4 +1,5 @@
-﻿using GlassRecipeAssistant.models;
+﻿using GlassRecipeAssistant.dao.entities;
+using GlassRecipeAssistant.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,8 +12,12 @@ using System.Windows.Forms;
 
 namespace GlassRecipeAssistant.views
 {
+    public delegate void PowderRenamedHandler();
+
     public partial class PowderBox : Form
     {
+        public event PowderRenamedHandler PowderRenamed;
+
         private IPowderModel model;
 
         private ManagerForm form;
@@ -33,13 +38,17 @@ namespace GlassRecipeAssistant.views
         {
             clearPowdersCache();
 
-            List<string> powders = model.findPowders();
-            if (powders != null)
+            try
             {
-                foreach (string ele in powders)
-                {
-                    listBox1.Items.Add(ele);
-                }
+                //listBox1.DataSource = model.findPowders();
+                listBox1.DisplayMember = "PowderName";
+                listBox1.ValueMember = "PowderName";
+
+                model.findPowders().ForEach(p => listBox1.Items.Add(p));
+            }
+            catch (Exception ex)
+            { // skip it if nothing found
+                return;
             }
         }
 
@@ -87,16 +96,12 @@ namespace GlassRecipeAssistant.views
                 }
                 else
                 {
-                    model.renamePowder(listBox1.SelectedIndex, textBox1.Text);
+                    model.renamePowder(((Powder)listBox1.SelectedItem).Id, textBox1.Text);
           
                     textBox1.BackColor = Color.White;
                     textBox1.Enabled = false;
 
-                    if (!form.nonGlassSelected())
-                    {
-                        form.loadRecipes();
-                    }
-                  
+                    PowderRenamed();
                 }
             }
         }

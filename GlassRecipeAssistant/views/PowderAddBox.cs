@@ -1,8 +1,10 @@
-﻿using GlassRecipeAssistant.models;
+﻿using GlassRecipeAssistant.dao.entities;
+using GlassRecipeAssistant.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -31,8 +33,16 @@ namespace GlassRecipeAssistant.views
             }
             else
             {
-                model.addPowder(text);
-                this.Close();
+                try
+                {
+                    model.addPowder(new Powder(text));
+                    this.Close();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("色粉名不允许重复");
+                }
+                
             }
         }
 

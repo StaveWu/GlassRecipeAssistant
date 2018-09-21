@@ -100,6 +100,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Release\CircularProgressBar.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -116,17 +117,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dao\Optional.cs" />
+    <Compile Include="dao\RepositoryFactory.cs" />
+    <Compile Include="models\GlassRecipeVo.cs" />
+    <Compile Include="dao\CrudRepository.cs" />
+    <Compile Include="dao\entities\GlassRecipe.cs" />
+    <Compile Include="dao\entities\Powder.cs" />
+    <Compile Include="dao\IGlassRecipeRepository.cs" />
+    <Compile Include="dao\implementions\GlassRecipeRepository.cs" />
+    <Compile Include="dao\implementions\PowderRepository.cs" />
+    <Compile Include="dao\IPowderRepository.cs" />
     <Compile Include="GlassRecipesDatabaseDataSet.cs">
       <DependentUpon>GlassRecipesDatabaseDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="GlassRecipesDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GlassRecipesDatabaseDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="IRecipeQualityCalculateStrategy.cs" />
-    <Compile Include="models\GlassRecipesModel.cs" />
-    <Compile Include="models\IGlassRecipesModel.cs" />
+    <Compile Include="models\GlassRecipePowderMapper.cs" />
+    <Compile Include="models\IGlassRecipePowderMapper.cs" />
     <Compile Include="models\ILogger.cs" />
     <Compile Include="models\IPowderModel.cs" />
     <Compile Include="models\PowderModel.cs" />
@@ -137,23 +150,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReCheckQualityStrategy.cs" />
     <Compile Include="RegexUtils.cs" />
-    <Compile Include="views\ClientAddBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\ClientAddBox.Designer.cs">
-      <DependentUpon>ClientAddBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="views\ErrorThresholdBox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="views\ErrorThresholdBox.Designer.cs">
       <DependentUpon>ErrorThresholdBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="views\GlassAddBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\GlassAddBox.Designer.cs">
-      <DependentUpon>GlassAddBox.cs</DependentUpon>
     </Compile>
     <Compile Include="views\HistoryBox.cs">
       <SubType>Form</SubType>
@@ -209,17 +210,23 @@
     <Compile Include="views\QualityEnterBox.Designer.cs">
       <DependentUpon>QualityEnterBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\RecipeAddBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\RecipeAddBox.Designer.cs">
-      <DependentUpon>RecipeAddBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="views\VersionBox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="views\VersionBox.Designer.cs">
       <DependentUpon>VersionBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\VoAddBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\AbstractVoBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\AbstractVoBox.Designer.cs">
+      <DependentUpon>AbstractVoBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\VoEditBox.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ZeroQualityStrategy.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -231,9 +238,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="views\ClientAddBox.resx">
-      <DependentUpon>ClientAddBox.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="views\ErrorThresholdBox.resx">
       <DependentUpon>ErrorThresholdBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -261,22 +265,25 @@
     <EmbeddedResource Include="views\QualityEnterBox.resx">
       <DependentUpon>QualityEnterBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\RecipeAddBox.resx">
-      <DependentUpon>RecipeAddBox.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="views\VersionBox.resx">
       <DependentUpon>VersionBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\AbstractVoBox.resx">
+      <DependentUpon>AbstractVoBox.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="GlassRecipesDatabaseDataSet.xsc">
       <DependentUpon>GlassRecipesDatabaseDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="GlassRecipesDatabaseDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>GlassRecipesDatabaseDataSet.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="GlassRecipesDatabaseDataSet.xss">
       <DependentUpon>GlassRecipesDatabaseDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -298,8 +305,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="GlassRecipesDatabase_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>GlassRecipesDatabase.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resourses\bitbug_favicon.ico" />
     <Content Include="resourses\start.jpg" />
@@ -317,5 +324,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

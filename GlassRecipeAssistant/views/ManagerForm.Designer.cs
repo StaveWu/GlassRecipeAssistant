@@ -28,183 +28,96 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.导入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.csvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.csvToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.密码修改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.误差限ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.色粉添加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button10 = new System.Windows.Forms.Button();
             this.glassRecipesDatabaseDataSet = new GlassRecipeAssistant.GlassRecipesDatabaseDataSet();
-            this.groupBox4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.powdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.powdersTableAdapter = new GlassRecipeAssistant.GlassRecipesDatabaseDataSetTableAdapters.PowdersTableAdapter();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.客户 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.镜片型号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.色粉 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.质量 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button5 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.glassRecipesDatabaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.powdersBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.button9);
-            this.groupBox4.Controls.Add(this.button8);
-            this.groupBox4.Controls.Add(this.comboBox2);
-            this.groupBox4.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox4.Location = new System.Drawing.Point(12, 45);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(248, 423);
-            this.groupBox4.TabIndex = 23;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "客户";
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(19, 362);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(211, 48);
-            this.button9.TabIndex = 1;
-            this.button9.Text = "删除";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(19, 308);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(211, 48);
-            this.button8.TabIndex = 1;
-            this.button8.Text = "添加";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(19, 46);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(211, 38);
-            this.comboBox2.TabIndex = 0;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.listBox1);
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox2.Location = new System.Drawing.Point(520, 45);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(304, 423);
-            this.groupBox2.TabIndex = 22;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "配方";
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(15, 251);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(272, 42);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "-";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 30;
-            this.listBox1.Location = new System.Drawing.Point(15, 46);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(272, 184);
-            this.listBox1.TabIndex = 17;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(15, 362);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(272, 48);
-            this.button6.TabIndex = 16;
-            this.button6.Text = "删除";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(15, 308);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(272, 48);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "添加";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox1.Location = new System.Drawing.Point(266, 45);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(248, 423);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "镜片型号";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(16, 46);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(211, 38);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(16, 308);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(211, 48);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "添加";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(16, 362);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(211, 48);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "删除";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.文件ToolStripMenuItem,
             this.设置ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(842, 35);
+            this.menuStrip1.Size = new System.Drawing.Size(1348, 35);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // 文件ToolStripMenuItem
+            // 
+            this.文件ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.导入ToolStripMenuItem,
+            this.导出ToolStripMenuItem});
+            this.文件ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.10084F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
+            this.文件ToolStripMenuItem.Text = "文件";
+            // 
+            // 导入ToolStripMenuItem
+            // 
+            this.导入ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.csvToolStripMenuItem});
+            this.导入ToolStripMenuItem.Name = "导入ToolStripMenuItem";
+            this.导入ToolStripMenuItem.Size = new System.Drawing.Size(145, 32);
+            this.导入ToolStripMenuItem.Text = "导入...";
+            // 
+            // csvToolStripMenuItem
+            // 
+            this.csvToolStripMenuItem.Name = "csvToolStripMenuItem";
+            this.csvToolStripMenuItem.Size = new System.Drawing.Size(120, 32);
+            this.csvToolStripMenuItem.Text = "csv";
+            this.csvToolStripMenuItem.Click += new System.EventHandler(this.csvToolStripMenuItem_Click);
+            // 
+            // 导出ToolStripMenuItem
+            // 
+            this.导出ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.csvToolStripMenuItem1});
+            this.导出ToolStripMenuItem.Name = "导出ToolStripMenuItem";
+            this.导出ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
+            this.导出ToolStripMenuItem.Text = "导出...";
+            // 
+            // csvToolStripMenuItem1
+            // 
+            this.csvToolStripMenuItem1.Name = "csvToolStripMenuItem1";
+            this.csvToolStripMenuItem1.Size = new System.Drawing.Size(215, 32);
+            this.csvToolStripMenuItem1.Text = "csv";
+            this.csvToolStripMenuItem1.Click += new System.EventHandler(this.csvToolStripMenuItem1_Click);
             // 
             // 设置ToolStripMenuItem
             // 
@@ -220,38 +133,235 @@
             // 密码修改ToolStripMenuItem
             // 
             this.密码修改ToolStripMenuItem.Name = "密码修改ToolStripMenuItem";
-            this.密码修改ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
+            this.密码修改ToolStripMenuItem.Size = new System.Drawing.Size(170, 32);
             this.密码修改ToolStripMenuItem.Text = "修改密码";
             this.密码修改ToolStripMenuItem.Click += new System.EventHandler(this.密码修改ToolStripMenuItem_Click);
             // 
             // 误差限ToolStripMenuItem
             // 
             this.误差限ToolStripMenuItem.Name = "误差限ToolStripMenuItem";
-            this.误差限ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
+            this.误差限ToolStripMenuItem.Size = new System.Drawing.Size(170, 32);
             this.误差限ToolStripMenuItem.Text = "设定误差";
             this.误差限ToolStripMenuItem.Click += new System.EventHandler(this.误差限ToolStripMenuItem_Click);
             // 
             // 色粉添加ToolStripMenuItem
             // 
             this.色粉添加ToolStripMenuItem.Name = "色粉添加ToolStripMenuItem";
-            this.色粉添加ToolStripMenuItem.Size = new System.Drawing.Size(215, 32);
+            this.色粉添加ToolStripMenuItem.Size = new System.Drawing.Size(170, 32);
             this.色粉添加ToolStripMenuItem.Text = "添加色粉";
             this.色粉添加ToolStripMenuItem.Click += new System.EventHandler(this.色粉添加ToolStripMenuItem_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.客户,
+            this.镜片型号,
+            this.色粉,
+            this.质量});
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView1.Location = new System.Drawing.Point(24, 208);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 27;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1299, 491);
+            this.dataGridView1.TabIndex = 25;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(24, 87);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(218, 38);
+            this.textBox1.TabIndex = 27;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(248, 87);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(97, 39);
+            this.button10.TabIndex = 26;
+            this.button10.Text = "搜索";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // glassRecipesDatabaseDataSet
             // 
             this.glassRecipesDatabaseDataSet.DataSetName = "GlassRecipesDatabaseDataSet";
             this.glassRecipesDatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // powdersBindingSource
+            // 
+            this.powdersBindingSource.DataMember = "Powders";
+            this.powdersBindingSource.DataSource = this.glassRecipesDatabaseDataSet;
+            // 
+            // powdersTableAdapter
+            // 
+            this.powdersTableAdapter.ClearBeforeFill = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(384, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 31);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "客户:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(390, 88);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(211, 38);
+            this.comboBox1.TabIndex = 29;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(612, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 31);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "镜片型号:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(618, 88);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(301, 38);
+            this.comboBox2.TabIndex = 29;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(927, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 31);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "色粉:";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(933, 88);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(223, 38);
+            this.comboBox3.TabIndex = 29;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(24, 163);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(90, 39);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "添加";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(120, 163);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(90, 39);
+            this.button2.TabIndex = 30;
+            this.button2.Text = "删除";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(216, 163);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(90, 39);
+            this.button3.TabIndex = 30;
+            this.button3.Text = "编辑";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(1008, 163);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(315, 39);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "共有?条记录";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(1183, 87);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(140, 39);
+            this.button4.TabIndex = 32;
+            this.button4.Text = "清除筛选";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // 客户
+            // 
+            this.客户.FillWeight = 61.54822F;
+            this.客户.HeaderText = "客户";
+            this.客户.Name = "客户";
+            // 
+            // 镜片型号
+            // 
+            this.镜片型号.FillWeight = 61.54822F;
+            this.镜片型号.HeaderText = "镜片型号";
+            this.镜片型号.Name = "镜片型号";
+            // 
+            // 色粉
+            // 
+            this.色粉.FillWeight = 61.54822F;
+            this.色粉.HeaderText = "色粉";
+            this.色粉.Name = "色粉";
+            this.色粉.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.色粉.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // 质量
+            // 
+            this.质量.FillWeight = 61.54822F;
+            this.质量.HeaderText = "质量(g)";
+            this.质量.Name = "质量";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(312, 163);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(140, 39);
+            this.button5.TabIndex = 33;
+            this.button5.Text = "删除所有";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(842, 482);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(1348, 745);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.MainMenuStrip = this.menuStrip1;
@@ -260,37 +370,49 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "配方辅助工具（管理员）";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GlassRecipeManager_FormClosing);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.ManagerForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.glassRecipesDatabaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.powdersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 密码修改ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 误差限ToolStripMenuItem;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label1;
         private GlassRecipesDatabaseDataSet glassRecipesDatabaseDataSet;
         private System.Windows.Forms.ToolStripMenuItem 色粉添加ToolStripMenuItem;
+        private System.Windows.Forms.BindingSource powdersBindingSource;
+        private GlassRecipesDatabaseDataSetTableAdapters.PowdersTableAdapter powdersTableAdapter;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 导入ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem csvToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 导出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem csvToolStripMenuItem1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 客户;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 镜片型号;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 色粉;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 质量;
+        private System.Windows.Forms.Button button5;
     }
 }

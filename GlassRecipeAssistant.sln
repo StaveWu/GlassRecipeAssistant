@@ -11,6 +11,10 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201806061034", "Setup2
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201806061125", "Setup201806061125\Setup201806061125.vdproj", "{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201806301154", "Setup201806301154\Setup201806301154.vdproj", "{6E8DFF7A-1DE8-4AFB-95C2-938E1EA65DCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlassRecipeAssistantTest", "GlassRecipeAssistantTest\GlassRecipeAssistantTest.csproj", "{F65EF4AF-5DB1-470C-9632-F6F9E8DF935E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,24 @@ Global
 		{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}.Release|x64.Build.0 = Release
 		{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}.Release|x86.ActiveCfg = Release
 		{96416FA3-F7B8-43F2-AFAD-212C6EF76D9D}.Release|x86.Build.0 = Release
+		{6E8DFF7A-1DE8-4AFB-95C2-938E1EA65DCB}.Debug|Any CPU.ActiveCfg = Debug
+		{6E8DFF7A-1DE8-4AFB-95C2-938E1EA65DCB}.Debug|x64.ActiveCfg = Debug
+		{6E8DFF7A-1DE8-4AFB-95C2-938E1EA65DCB}.Debug|x86.ActiveCfg = Debug
+		{6E8DFF7A-1DE8-4AFB-95C2-938E1EA65DCB}.Release|Any CPU.ActiveCfg = Release
+		{6E8DFF7A-1DE8-4AFB-95C2-938E1EA65DCB}.Release|x64.ActiveCfg = Release
+		{6E8DFF7A-1DE8-4AFB-95C2-938E1EA65DCB}.Release|x86.ActiveCfg = Release
+		{F65EF4AF-5DB1-470C-9632-F6F9E8DF935E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F65EF4AF-5DB1-470C-9632-F6F9E8DF935E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F65EF4AF-5DB1-470C-9632-F6F9E8DF935E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F65EF4AF-5DB1-470C-9632-F6F9E8DF935E}.Debug|x64.Build.0 = Debug|Any CPU
+		{F65EF4AF-5DB1-470C-9632-F6F9E8DF935E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F65EF4AF-5DB1-470C-9632-F6F9E8DF935E}.Debug|x86.Build.0 = Debug|Any CPU
+		{F65EF4AF-5DB1-470C-9632-F6F9E8DF935E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F65EF4AF-5DB1-470C-9632-F6F9E8DF935E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F65EF4AF-5DB1-470C-9632-F6F9E8DF935E}.Release|x64.ActiveCfg = Release|Any CPU
+		{F65EF4AF-5DB1-470C-9632-F6F9E8DF935E}.Release|x64.Build.0 = Release|Any CPU
+		{F65EF4AF-5DB1-470C-9632-F6F9E8DF935E}.Release|x86.ActiveCfg = Release|Any CPU
+		{F65EF4AF-5DB1-470C-9632-F6F9E8DF935E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

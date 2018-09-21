@@ -1,4 +1,5 @@
-﻿using GlassRecipeAssistant.models;
+﻿using GlassRecipeAssistant.dao.entities;
+using GlassRecipeAssistant.models;
 using GlassRecipeAssistant.views;
 using RecipeAssistant.models;
 using RecipeAssistant.views;
@@ -26,7 +27,7 @@ namespace RecipeAssistant
 
         // model
         private SerialPort serialPort;
-        private IGlassRecipesModel grModel;
+        private IGlassRecipePowderMapper grMapper;
         private IPowderModel powderModel;
         private ILogger logger;
 
@@ -50,7 +51,7 @@ namespace RecipeAssistant
 
             // 初始化model
             serialPort = new SerialPort();
-            grModel = new GlassRecipesModel();
+            grMapper = new GlassRecipePowderMapper();
             powderModel = new PowderModel();
             logger = new TextLogger();
 
@@ -58,10 +59,6 @@ namespace RecipeAssistant
 
             // 注册回调
             serialPort.DataReceived += new SerialDataReceivedEventHandler(dataReceived);
-
-            grModel.ClientChanged += loadClients;
-            grModel.GlassChanged += loadGlasses;
-            grModel.RecipeChanged += loadRecipes;
 
             loadClients();
             loadGlasses();
@@ -83,18 +80,18 @@ namespace RecipeAssistant
             public Color BackColor { get; set; }
             private double currentQuality = 0.0;
             public double StandardQuality { get; set; }
-            public string RecipeName { get; set; }
+            public string PowderName { get; set; }
 
-            public ListBoxItemInfo(string recipeName, double standardQuality)
+            public ListBoxItemInfo(string powder, double standardQuality)
             {
-                RecipeName = recipeName;
+                PowderName = powder;
                 StandardQuality = standardQuality;
                 BackColor = Color.FromArgb(209, 209, 209); // 灰色
             }
 
             public override String ToString()
             {
-                return RecipeName;
+                return PowderName;
             }
 
             public double CurrentQuality
@@ -139,11 +136,7 @@ namespace RecipeAssistant
             clearRecipesCache();
             clearGlassesCache();
 
-            List<string> gs = grModel.findClients();
-            foreach (string ele in gs)
-            {
-                comboBox2.Items.Add(ele);
-            }
+            grMapper.findCustomers().ForEach(ele => comboBox2.Items.Add(ele));
             if (!isClientEmpty())
             {
                 comboBox2.SelectedIndex = comboBox2.Items.Count - 1;
@@ -163,7 +156,7 @@ namespace RecipeAssistant
                 return;
             }
 
-            List<string> gs = grModel.findGlasses(getSelectedClientName());
+            List<string> gs = grMapper.findGlassesByCustomer(getSelectedClientName());
             foreach (string ele in gs)
             {
                 comboBox1.Items.Add(ele);
@@ -187,7 +180,7 @@ namespace RecipeAssistant
                 return;
             }
 
-            Dictionary<int, double> recipes = grModel.findRecipes(getSelectedClientName(), getSelectedGlassName());
+            Dictionary<string, double> recipes = grMapper.findPowders(getSelectedClientName(), getSelectedGlassName());
             fillRecipes(recipes);
 
         }
@@ -334,7 +327,7 @@ namespace RecipeAssistant
             Dictionary<string, double[]> recipes = new Dictionary<string, double[]>();
             foreach (ListBoxItemInfo ele in listBox1.Items)
             {
-                recipes.Add(ele.RecipeName, new double[] { ele.CurrentQuality, ele.StandardQuality });
+                recipes.Add(ele.PowderName, new double[] { ele.CurrentQuality, ele.StandardQuality });
             }
             logger.write(getSelectedClientName(), getSelectedGlassName(), recipes);
         }
@@ -614,15 +607,15 @@ namespace RecipeAssistant
             return false;
         }
 
-        private void fillRecipes(Dictionary<int, double> recipes)
+        private void fillRecipes(Dictionary<string, double> recipes)
         {
             clearRecipesCache();
             if (recipes != null)
             {
                 double rate = Settings.RawMaterialQuality / (double)10;
-                foreach (int ele in recipes.Keys)
+                foreach (string ele in recipes.Keys)
                 {
-                    listBox1.Items.Add(new ListBoxItemInfo(powderModel.getPowderName(ele), recipes[ele] * rate));
+                    listBox1.Items.Add(new ListBoxItemInfo(ele, recipes[ele] * rate));
                 }
             }
         }
@@ -636,7 +629,7 @@ namespace RecipeAssistant
                 return;
             }
             label7.Text = "" + getSelectedRecipes().StandardQuality + "g";
-            label8.Text = getSelectedRecipes().RecipeName;
+            label8.Text = getSelectedRecipes().PowderName;
         }
 
 
