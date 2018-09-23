@@ -36,9 +36,6 @@ namespace GlassRecipeAssistantTest.models
             mapper.save(new GlassRecipeVo("a", "b", "c", 15.0));
             Optional<GlassRecipeVo> vo1 = mapper.findByCustomerAndGlassAndPowder("a", "b", "c");
             Assert.AreEqual(15.0, vo1.get().Weight);
-
-            Assert.ThrowsException<InvalidOperationException>(() =>
-                mapper.findByCustomerAndGlassAndPowder("", "", ""));
         }
 
         [TestMethod]

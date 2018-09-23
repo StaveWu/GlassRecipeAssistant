@@ -5,11 +5,12 @@ using RecipeAssistant.models;
 using RecipeAssistant.views;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.ComponentModel; 
 using System.Data;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -20,6 +21,8 @@ namespace RecipeAssistant
 {
     public partial class MainForm : Form
     {
+        private LoadingBox loadingBox;
+
         /// <summary>
         /// 实时质量
         /// </summary>
@@ -44,6 +47,7 @@ namespace RecipeAssistant
         public MainForm(Form adamForm)
         {
             InitializeComponent();
+            loadingBox = new LoadingBox();
 
             this.adamForm = adamForm;
 
@@ -87,11 +91,6 @@ namespace RecipeAssistant
                 PowderName = powder;
                 StandardQuality = standardQuality;
                 BackColor = Color.FromArgb(209, 209, 209); // 灰色
-            }
-
-            public override String ToString()
-            {
-                return PowderName;
             }
 
             public double CurrentQuality
@@ -180,7 +179,8 @@ namespace RecipeAssistant
                 return;
             }
 
-            Dictionary<string, double> recipes = grMapper.findPowders(getSelectedClientName(), getSelectedGlassName());
+            Dictionary<string, double> recipes = 
+                grMapper.findPowders(getSelectedClientName(), getSelectedGlassName());
             fillRecipes(recipes);
 
         }
@@ -283,33 +283,49 @@ namespace RecipeAssistant
                 catch (Exception ex)
                 {
                     serialPort.Close();
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("通讯出错！请检查接收的数据格式是否正确");
                 }
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private async void button4_Click(object sender, EventArgs e)
         {// 下一个配方按钮
-            if (checkRecipeSelected() && checkWithinErrorThreshold() && !checkLastRecipeSelected())
+            if (checkRecipeSelected())
             {
-                listBox1.SelectedIndex += 1;
-            }
-        }
+                loadingBox.Show();
+                loadingBox.Update();
 
-        private bool checkWithinErrorThreshold()
-        {
-            if (!withinErrorThreshold())
-            {
-                MessageBox.Show("不在误差范围内，请继续调整该配方质量！");
-                return false;
-            }
-            return true;
-        }
+                var selectedItem = getSelectedRecipes() as ListBoxItemInfo;
 
-        private bool withinErrorThreshold()
-        {
-            double cha = getSelectedRecipes().CurrentQuality - getSelectedRecipes().StandardQuality;
-            return Math.Abs(cha) <= Settings.ErrorThreshold;
+                bool isWithinErrorThreshold = await Task.Run(() =>
+                {
+                    for (int i = 0; i < 10; i++) // 多次采样验证
+                    {
+                        Thread.Sleep(200);
+                        double cha = selectedItem.CurrentQuality
+                                    - selectedItem.StandardQuality;
+                        if (Math.Abs(cha) > Settings.ErrorThreshold)
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                });
+
+                loadingBox.Hide();
+
+                if (isWithinErrorThreshold)
+                {
+                    if (!checkLastRecipeSelected())
+                    {
+                        listBox1.SelectedIndex += 1;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("当前值不够稳定，未满足误差要求");
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -339,19 +355,35 @@ namespace RecipeAssistant
                 return;
             }
             ListBoxItemInfo it = listBox1.Items[e.Index] as ListBoxItemInfo;
+
+            Brush weightBrush;
+
             e.DrawBackground();
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {// 如果被选中，则画出聚焦框
                 e.DrawFocusRectangle();
+
+                weightBrush = Brushes.Black; 
             }
             else
             {// 否则根据item存储的颜色来画背景色
                 Brush br = new SolidBrush(it.BackColor);
                 //Brush br = new SolidBrush(Color.Yellow);
                 e.Graphics.FillRectangle(br, e.Bounds);
-            }
-            e.Graphics.DrawString(it.ToString(), e.Font, new SolidBrush(Color.Black), e.Bounds, null);
 
+                weightBrush = Brushes.Gray;
+            }
+
+            e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+
+            // 设置item的显示信息格式
+            var powderFont = new Font("微软雅黑", 16, FontStyle.Bold);
+            e.Graphics.DrawString(it.PowderName, powderFont,Brushes.Black, 
+                e.Bounds, null);
+
+            var standardWeightFont = new Font("微软雅黑", 10, FontStyle.Regular);
+            e.Graphics.DrawString("标准质量为：" + it.StandardQuality + "g", standardWeightFont,
+                weightBrush, e.Bounds.Left + 3, e.Bounds.Top + 32);
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -393,7 +425,8 @@ namespace RecipeAssistant
             {
                 return;
             }
-            double cha = getSelectedRecipes().CurrentQuality - getSelectedRecipes().StandardQuality;
+            double cha = getSelectedRecipes().CurrentQuality
+                - getSelectedRecipes().StandardQuality;
             if (Math.Abs(cha) <= Settings.ErrorThreshold)
             {// 绿色
                 circularProgressBar1.ProgressColor = Color.FromArgb(34, 177, 76);
@@ -429,6 +462,7 @@ namespace RecipeAssistant
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             adamForm.Close();
+            loadingBox.Close();
         }
 
         private void 原料质量ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -649,5 +683,6 @@ namespace RecipeAssistant
                 }
             }
         }
+
     }
 }

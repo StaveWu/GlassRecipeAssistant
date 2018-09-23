@@ -115,15 +115,13 @@ namespace RecipeAssistant.models
             List<GlassRecipe> grs = new List<GlassRecipe>();
             List<Powder> powders = new List<Powder>();
 
-            vos.ForEach(
-                vo =>
-                {
-                    grs.Add(toGlassRecipe(vo));
-                    powders.Add(toPowder(vo));
-                });
-
-            grRepository.saveAll(grs);
+            // should save powder first to generate powder id
+            vos.ForEach(vo => powders.Add(toPowder(vo)));
             powderRepository.saveAll(powders);
+
+            // here would use powder id generated above
+            vos.ForEach(vo => grs.Add(toGlassRecipe(vo)));
+            grRepository.saveAll(grs);
         }
 
         private Powder toPowder(GlassRecipeVo vo)
@@ -135,6 +133,10 @@ namespace RecipeAssistant.models
             }
             else
             {
+                //Powder newPowder = new Powder(vo.PowderName);
+                //powderRepository.save(newPowder);
+                //Optional<Powder> p = powderRepository.findByPowderName(vo.PowderName);
+                //return p.get();
                 return new Powder(vo.PowderName);
             }
         }
@@ -171,6 +173,10 @@ namespace RecipeAssistant.models
                     if (powder.isPresent())
                     {
                         res.Add(toVo(gr, powder.get()));
+                    }
+                    else
+                    {
+                        res.Add(toVo(gr, new Powder("")));
                     }
                 });
 

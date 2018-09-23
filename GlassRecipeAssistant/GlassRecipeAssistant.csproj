@@ -100,6 +100,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Release\CircularProgressBar.dll</HintPath>
     </Reference>
+    <Reference Include="CSharp.Winform.UI.Loading, Version=1.0.0.2, Culture=neutral, PublicKeyToken=872ff9e93c410e95, processorArchitecture=MSIL">
+      <HintPath>..\packages\CSharp.Winform.UI.Loading.1.0.0.2\lib\net20\CSharp.Winform.UI.Loading.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -161,6 +164,12 @@
     </Compile>
     <Compile Include="views\HistoryBox.Designer.cs">
       <DependentUpon>HistoryBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\LoadingBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\LoadingBox.Designer.cs">
+      <DependentUpon>LoadingBox.cs</DependentUpon>
     </Compile>
     <Compile Include="views\ManagerForm.cs">
       <SubType>Form</SubType>
@@ -244,6 +253,9 @@
     <EmbeddedResource Include="views\HistoryBox.resx">
       <DependentUpon>HistoryBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\LoadingBox.resx">
+      <DependentUpon>LoadingBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\ManagerForm.resx">
       <DependentUpon>ManagerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,13 +314,14 @@
   <ItemGroup>
     <Content Include="bitbug_favicon.ico" />
     <Content Include="GlassRecipesDatabase.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="GlassRecipesDatabase_log.ldf">
       <DependentUpon>GlassRecipesDatabase.mdf</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="resourses\bitbug_favicon.ico" />
+    <Content Include="resourses\Loading_icon.gif" />
     <Content Include="resourses\start.jpg" />
     <Content Include="resourses\stop.jpg" />
   </ItemGroup>
