@@ -40,7 +40,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(151, 52);
             this.label1.TabIndex = 0;
-            this.label1.Text = "V 3.0.0";
+            this.label1.Text = "V 3.0.1";
             // 
             // label3
             // 

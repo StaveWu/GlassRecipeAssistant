@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -39,23 +37,19 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 35);
+            this.label1.Location = new System.Drawing.Point(33, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 27);
             this.label1.TabIndex = 0;
             this.label1.Text = "客户:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(159, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(317, 34);
-            this.textBox1.TabIndex = 1;
             // 
             // label2
             // 
@@ -65,13 +59,6 @@
             this.label2.Size = new System.Drawing.Size(97, 27);
             this.label2.TabIndex = 0;
             this.label2.Text = "镜片型号:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(159, 79);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(317, 34);
-            this.textBox2.TabIndex = 2;
             // 
             // label3
             // 
@@ -136,18 +123,45 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "重复添加！";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 6.655462F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(156, 219);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(110, 16);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "基准原料质量为10kg";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(159, 28);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(317, 35);
+            this.comboBox2.TabIndex = 1;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(159, 79);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(317, 35);
+            this.comboBox3.TabIndex = 2;
+            // 
             // AbstractVoBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(508, 302);
+            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -164,9 +178,7 @@
         #endregion
 
         protected System.Windows.Forms.Label label1;
-        protected System.Windows.Forms.TextBox textBox1;
         protected System.Windows.Forms.Label label2;
-        protected System.Windows.Forms.TextBox textBox2;
         protected System.Windows.Forms.Label label3;
         protected System.Windows.Forms.Label label4;
         protected System.Windows.Forms.TextBox textBox4;
@@ -174,5 +186,8 @@
         protected System.Windows.Forms.Button button1;
         protected System.Windows.Forms.Button button2;
         protected System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        protected System.Windows.Forms.ComboBox comboBox2;
+        protected System.Windows.Forms.ComboBox comboBox3;
     }
 }

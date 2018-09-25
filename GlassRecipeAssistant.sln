@@ -21,6 +21,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201809231048", "Setup2
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201809231115", "Setup201809231115\Setup201809231115.vdproj", "{B80D76ED-673E-491A-9FBD-BB7BAE9A2DA1}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201809251947", "Setup201809251947\Setup201809251947.vdproj", "{868DBBEB-7E1C-4766-8DB7-C4948EC97DA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +111,12 @@ Global
 		{B80D76ED-673E-491A-9FBD-BB7BAE9A2DA1}.Release|Any CPU.ActiveCfg = Release
 		{B80D76ED-673E-491A-9FBD-BB7BAE9A2DA1}.Release|x64.ActiveCfg = Release
 		{B80D76ED-673E-491A-9FBD-BB7BAE9A2DA1}.Release|x86.ActiveCfg = Release
+		{868DBBEB-7E1C-4766-8DB7-C4948EC97DA2}.Debug|Any CPU.ActiveCfg = Debug
+		{868DBBEB-7E1C-4766-8DB7-C4948EC97DA2}.Debug|x64.ActiveCfg = Debug
+		{868DBBEB-7E1C-4766-8DB7-C4948EC97DA2}.Debug|x86.ActiveCfg = Debug
+		{868DBBEB-7E1C-4766-8DB7-C4948EC97DA2}.Release|Any CPU.ActiveCfg = Release
+		{868DBBEB-7E1C-4766-8DB7-C4948EC97DA2}.Release|x64.ActiveCfg = Release
+		{868DBBEB-7E1C-4766-8DB7-C4948EC97DA2}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

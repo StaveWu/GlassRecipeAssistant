@@ -17,8 +17,8 @@ namespace GlassRecipeAssistant.views
             : base(powderModel, grModel)
         {
             oldVo = vo;
-            textBox1.Text = vo.Customer;
-            textBox2.Text = vo.GlassName;
+            comboBox2.Text = vo.Customer;
+            comboBox3.Text = vo.GlassName;
             textBox4.Text = vo.Weight.ToString();
             comboBox1.SelectedValue = vo.PowderName;
         }
@@ -26,8 +26,8 @@ namespace GlassRecipeAssistant.views
         protected override void handleConfirmRequest()
         {
             GlassRecipeVo newVo = new GlassRecipeVo(
-                    textBox1.Text,
-                    textBox2.Text,
+                    comboBox2.Text,
+                    comboBox3.Text,
                     comboBox1.SelectedItem.ToString(),
                     Convert.ToDouble(textBox4.Text));
 

@@ -211,5 +211,13 @@ namespace RecipeAssistant.models
 
             return new Optional<GlassRecipeVo>(query == null ? null : query);
         }
+
+        public List<string> findGlasses()
+        {
+            return grRepository.findAll()
+                .Select(gr => gr.Glass)
+                .Distinct()
+                .ToList();
+        }
     }
 }

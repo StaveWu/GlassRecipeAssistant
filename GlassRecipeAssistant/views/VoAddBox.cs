@@ -20,15 +20,16 @@ namespace GlassRecipeAssistant.views
         protected override void handleConfirmRequest()
         {
             // Make sure new in is unique
-            if (dataMapper.existsByCustomerAndGlassAndPowder(textBox1.Text, textBox2.Text, comboBox1.SelectedItem.ToString()))
+            if (dataMapper.existsByCustomerAndGlassAndPowder(comboBox2.Text, 
+                comboBox3.Text, comboBox1.SelectedItem.ToString()))
             {
                 label5.Visible = true;
             }
             else
             {
                 GlassRecipeVo vo = new GlassRecipeVo(
-                    textBox1.Text,
-                    textBox2.Text,
+                    comboBox2.Text,
+                    comboBox3.Text,
                     comboBox1.SelectedItem.ToString(),
                     Convert.ToDouble(textBox4.Text));
                 dataMapper.save(vo);

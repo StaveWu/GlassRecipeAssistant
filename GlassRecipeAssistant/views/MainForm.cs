@@ -67,6 +67,7 @@ namespace RecipeAssistant
             loadClients();
             loadGlasses();
             loadRecipes();
+            textBox1.Text = "" + Settings.RawMaterialQuality; // 原料质量
 
             // 状态栏监视定时器
             timer1.Start();
@@ -330,6 +331,7 @@ namespace RecipeAssistant
 
         private void button1_Click(object sender, EventArgs e)
         {// 完成按钮
+            textBox1.Enabled = true; // 解锁原料质量
             if (checkGlassSelected() && checkRecipeSelected())
             {
                 recordRecipesWeight();
@@ -451,6 +453,20 @@ namespace RecipeAssistant
 
         private void button7_Click(object sender, EventArgs e)
         {// 开始称重按钮
+            // 检查原料质量
+            if (!RegexUtils.isNumber(textBox1.Text))
+            {
+                MessageBox.Show("请先设置原料质量，并检查原料质量是否输入正确");
+                return;
+            }
+            else
+            {
+                textBox1.Enabled = false;
+                Settings.RawMaterialQuality = Convert.ToDouble(textBox1.Text);
+                loadRecipes();
+                refreshRecipeInfoLabels();
+            }
+
             if (isRecipesEmpty())
             {
                 MessageBox.Show("配方不存在！");
@@ -464,12 +480,6 @@ namespace RecipeAssistant
             adamForm.Close();
             loadingBox.Close();
         }
-
-        private void 原料质量ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new QualityEnterBox(this).Show();
-        }
-
 
         #region 菜单栏
         private void 串口ToolStripMenuItem_Click(object sender, EventArgs e)

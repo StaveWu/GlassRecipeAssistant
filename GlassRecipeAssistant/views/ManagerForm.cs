@@ -294,7 +294,8 @@ namespace GlassRecipeAssistant.views
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 List<GlassRecipeVo> csvData = new List<GlassRecipeVo>();
-                using (TextFieldParser parser = new TextFieldParser(openFileDialog.FileName))
+                using (TextFieldParser parser = new TextFieldParser(
+                    openFileDialog.FileName, Encoding.GetEncoding("GBK")))
                 {
                     parser.TextFieldType = FieldType.Delimited;
                     parser.SetDelimiters(",");
@@ -339,7 +340,8 @@ namespace GlassRecipeAssistant.views
             {
                 if (saveFileDialog.FileName != "")
                 {
-                    using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                    using (StreamWriter writer = new StreamWriter(
+                        saveFileDialog.FileName, false, Encoding.GetEncoding("GBK")))
                     {
                         writer.WriteLine(CUSTOMER + "," 
                             + GLASS + "," 

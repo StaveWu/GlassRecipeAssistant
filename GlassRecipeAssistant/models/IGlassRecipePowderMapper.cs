@@ -18,6 +18,8 @@ namespace RecipeAssistant.models
 
         List<string> findCustomers();
 
+        List<string> findGlasses();
+
         List<string> findGlassesByCustomer(string customer);
 
         Dictionary<string, double> findPowders(string customer, string glass);

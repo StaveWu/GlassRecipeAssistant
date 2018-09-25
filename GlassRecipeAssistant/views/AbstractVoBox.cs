@@ -28,8 +28,15 @@ namespace GlassRecipeAssistant.views
             this.dataMapper = mapper;
             label5.Visible = false;
 
+            // comboBox1以其选择的条目作为最终数据
             powderModel.findPowders()
                 .ForEach(p => comboBox1.Items.Add(p.PowderName));
+
+            // comboBox2和comboBox3以其text作为最终数据
+            dataMapper.findCustomers()
+                .ForEach(c => comboBox2.Items.Add(c));
+            dataMapper.findGlasses()
+                .ForEach(g => comboBox3.Items.Add(g));
         }
 
         private void button1_Click(object sender, EventArgs e)

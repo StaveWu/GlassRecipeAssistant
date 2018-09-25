@@ -34,7 +34,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.连接ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.串口ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.原料质量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查看ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.历史记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,11 +66,15 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -102,8 +105,7 @@
             // 连接ToolStripMenuItem
             // 
             this.连接ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.串口ToolStripMenuItem,
-            this.原料质量ToolStripMenuItem});
+            this.串口ToolStripMenuItem});
             this.连接ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.10084F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.连接ToolStripMenuItem.Name = "连接ToolStripMenuItem";
             this.连接ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
@@ -116,13 +118,6 @@
             this.串口ToolStripMenuItem.Size = new System.Drawing.Size(170, 32);
             this.串口ToolStripMenuItem.Text = "串口设置";
             this.串口ToolStripMenuItem.Click += new System.EventHandler(this.串口ToolStripMenuItem_Click);
-            // 
-            // 原料质量ToolStripMenuItem
-            // 
-            this.原料质量ToolStripMenuItem.Name = "原料质量ToolStripMenuItem";
-            this.原料质量ToolStripMenuItem.Size = new System.Drawing.Size(170, 32);
-            this.原料质量ToolStripMenuItem.Text = "原料质量";
-            this.原料质量ToolStripMenuItem.Click += new System.EventHandler(this.原料质量ToolStripMenuItem_Click);
             // 
             // 查看ToolStripMenuItem
             // 
@@ -245,7 +240,7 @@
             this.groupBox2.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox2.Location = new System.Drawing.Point(12, 76);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(549, 598);
+            this.groupBox2.Size = new System.Drawing.Size(549, 483);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "类别";
@@ -299,7 +294,7 @@
             this.listBox1.ItemHeight = 57;
             this.listBox1.Location = new System.Drawing.Point(174, 174);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(356, 403);
+            this.listBox1.Size = new System.Drawing.Size(356, 289);
             this.listBox1.TabIndex = 17;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox1_DrawItem);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -465,11 +460,42 @@
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 565);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(549, 109);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "属性";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("微软雅黑", 15.73109F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label10.Location = new System.Drawing.Point(13, 51);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(180, 35);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "原料质量(kg):";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("微软雅黑", 15.73109F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox1.Location = new System.Drawing.Point(256, 48);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(274, 42);
+            this.textBox1.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1348, 722);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.toolStrip1);
@@ -493,6 +519,8 @@
             this.groupBox3.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -531,12 +559,14 @@
         private CircularProgressBar.CircularProgressBar circularProgressBar1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ToolStripMenuItem 原料质量ToolStripMenuItem;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem 查看ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 历史记录ToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label10;
     }
 }
 
