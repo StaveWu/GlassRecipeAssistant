@@ -67,8 +67,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -168,7 +168,7 @@
             this.button1.Font = new System.Drawing.Font("微软雅黑", 15.73109F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button1.Location = new System.Drawing.Point(24, 529);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(354, 48);
+            this.button1.Size = new System.Drawing.Size(297, 48);
             this.button1.TabIndex = 8;
             this.button1.Text = "完成";
             this.button1.UseVisualStyleBackColor = true;
@@ -177,9 +177,9 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("微软雅黑", 15.73109F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button4.Location = new System.Drawing.Point(384, 475);
+            this.button4.Location = new System.Drawing.Point(327, 475);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(362, 102);
+            this.button4.Size = new System.Drawing.Size(419, 102);
             this.button4.TabIndex = 11;
             this.button4.Text = "下一个色粉";
             this.button4.UseVisualStyleBackColor = true;
@@ -376,7 +376,7 @@
             this.button7.Font = new System.Drawing.Font("微软雅黑", 15.73109F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button7.Location = new System.Drawing.Point(24, 475);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(354, 48);
+            this.button7.Size = new System.Drawing.Size(297, 48);
             this.button7.TabIndex = 13;
             this.button7.Text = "开始称重";
             this.button7.UseVisualStyleBackColor = true;
@@ -472,16 +472,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "属性";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("微软雅黑", 15.73109F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(13, 51);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(180, 35);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "原料质量(kg):";
-            // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("微软雅黑", 15.73109F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -489,6 +479,16 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(274, 42);
             this.textBox1.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("微软雅黑", 15.73109F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label10.Location = new System.Drawing.Point(13, 51);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(174, 35);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "原料质量(kg):";
             // 
             // MainForm
             // 

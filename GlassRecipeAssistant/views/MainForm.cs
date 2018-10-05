@@ -464,7 +464,7 @@ namespace RecipeAssistant
         private void button7_Click(object sender, EventArgs e)
         {// 开始称重按钮
             // 检查原料质量
-            if (!RegexUtils.isNumber(textBox1.Text))
+            if (!StringUtils.isNumber(textBox1.Text))
             {
                 MessageBox.Show("请先设置原料质量，并检查原料质量是否输入正确");
                 return;

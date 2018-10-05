@@ -33,7 +33,7 @@ namespace GlassRecipeAssistant.views
 
         private void trySettingErrorThreshold()
         {
-            if (RegexUtils.isNumber(textBox1.Text))
+            if (StringUtils.isNumber(textBox1.Text))
             {
                 label2.Visible = false;
                 textBox1.BackColor = Color.White;

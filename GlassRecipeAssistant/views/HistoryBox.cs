@@ -1,4 +1,5 @@
 ﻿using GlassRecipeAssistant.models;
+using RecipeAssistant;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +20,9 @@ namespace GlassRecipeAssistant.views
         {
             InitializeComponent();
 
-            string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "/log/" + clientName + "_" + glassName + ".txt";
+            string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase 
+                + "/log/" + StringUtils.filterIllegalChars(clientName) 
+                + "_" + StringUtils.filterIllegalChars(glassName) + ".txt";
 
             string content = "";
             using (StreamReader sr = new StreamReader(path))

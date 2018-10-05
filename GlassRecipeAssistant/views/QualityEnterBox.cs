@@ -28,7 +28,7 @@ namespace GlassRecipeAssistant.views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!RegexUtils.isNumber(textBox1.Text))
+            if (!StringUtils.isNumber(textBox1.Text))
             {
                 textBox1.BackColor = Color.Yellow;
                 label2.Visible = true;

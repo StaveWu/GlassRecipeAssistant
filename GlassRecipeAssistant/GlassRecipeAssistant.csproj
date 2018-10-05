@@ -153,7 +153,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReCheckQualityStrategy.cs" />
-    <Compile Include="RegexUtils.cs" />
+    <Compile Include="utils\StringUtils.cs" />
     <Compile Include="views\ErrorThresholdBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -314,11 +314,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GlassRecipesDatabase.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="GlassRecipesDatabase_log.ldf">
       <DependentUpon>GlassRecipesDatabase.mdf</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="resourses\bitbug_favicon.ico" />
     <Content Include="resourses\Loading_icon.gif" />

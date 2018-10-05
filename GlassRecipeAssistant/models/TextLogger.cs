@@ -15,7 +15,8 @@ namespace RecipeAssistant.models
         public void write(string clientName, string glassName, 
             Dictionary<string, double[]> recipes)
         {
-            string pathname = domain + clientName + "_" + glassName + ".txt";
+            string pathname = domain + StringUtils.filterIllegalChars(clientName) 
+                + "_" + StringUtils.filterIllegalChars(glassName) + ".txt";
 
             StreamWriter sw = null;
             try

@@ -53,6 +53,7 @@
     <Compile Include="dao\GlassRecipeRepositoryTests.cs" />
     <Compile Include="models\GlassRecipeDataMapperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="utils\StringUtilsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
