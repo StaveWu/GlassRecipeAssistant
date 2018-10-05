@@ -314,11 +314,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GlassRecipesDatabase.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="GlassRecipesDatabase_log.ldf">
       <DependentUpon>GlassRecipesDatabase.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resourses\bitbug_favicon.ico" />
     <Content Include="resourses\Loading_icon.gif" />

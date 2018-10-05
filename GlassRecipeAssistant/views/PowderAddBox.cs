@@ -33,16 +33,15 @@ namespace GlassRecipeAssistant.views
             }
             else
             {
-                try
+                if (model.contains(text))
+                {
+                    MessageBox.Show("色粉名不允许重复");
+                }
+                else
                 {
                     model.addPowder(new Powder(text));
                     this.Close();
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("色粉名不允许重复");
-                }
-                
             }
         }
 

@@ -17,6 +17,8 @@ namespace GlassRecipeAssistant.models
 
         List<Powder> findPowders();
 
+        bool contains(string powderName);
+
         event PowdersUpdateHandler PowdersUpdated;
     }
 }

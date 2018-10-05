@@ -40,5 +40,9 @@ namespace GlassRecipeAssistant.models
             PowdersUpdated();
         }
 
+        public bool contains(string powderName)
+        {
+            return powderRepository.existsByPowderName(powderName);
+        }
     }
 }
