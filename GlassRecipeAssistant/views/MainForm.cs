@@ -347,7 +347,17 @@ namespace RecipeAssistant
             {
                 recipes.Add(ele.PowderName, new double[] { ele.CurrentQuality, ele.StandardQuality });
             }
-            logger.write(getSelectedClientName(), getSelectedGlassName(), recipes);
+
+            try
+            {   // here is an io operation, may be failed, so try catching exception 
+                // in case the app dead
+                logger.write(getSelectedClientName(), getSelectedGlassName(), recipes);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            
         }
 
         private void listBox1_DrawItem(object sender, DrawItemEventArgs e)

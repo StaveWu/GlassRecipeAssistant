@@ -9,42 +9,53 @@ namespace RecipeAssistant.models
 {
     class TextLogger : ILogger
     {
+        private static string domain = AppDomain.CurrentDomain
+            .SetupInformation.ApplicationBase + "/log/";
+
         public void write(string clientName, string glassName, 
             Dictionary<string, double[]> recipes)
         {
-            string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "/log/" + clientName +"_" + glassName + ".txt";
+            string pathname = domain + clientName + "_" + glassName + ".txt";
 
-            StreamWriter sw;
-            if (!File.Exists(path))
+            StreamWriter sw = null;
+            try
             {
-                sw = new StreamWriter(path, true);
-                // 写入表头
-                string top = "";
+                if (!File.Exists(pathname))
+                {
+                    sw = new StreamWriter(pathname, true);
+                    // 写入表头
+                    string header = "";
+                    foreach (string ele in recipes.Keys)
+                    {
+                        header += ele;
+                        header += "\t";
+                    }
+                    header += "Time";
+                    sw.WriteLine(header);
+                }
+                else
+                {
+                    sw = new StreamWriter(pathname, true);
+                }
+                string data = "";
                 foreach (string ele in recipes.Keys)
                 {
-                    top += ele;
-                    top += "\t";
+                    data += recipes[ele][0];
+                    data += "/";
+                    data += recipes[ele][1];
+                    data += "\t";
                 }
-                top += "Time";
-                sw.WriteLine(top.Substring(0, top.Length));
+                data += DateTime.Now.ToString();
+                sw.WriteLine(data);
             }
-            else
+            finally
             {
-                sw = new StreamWriter(path, true);
+                if (sw != null)
+                {
+                    sw.Flush();
+                    sw.Close();
+                }
             }
-            string data = "";
-            foreach (string ele in recipes.Keys)
-            {
-                data += recipes[ele][0];
-                data += "/";
-                data += recipes[ele][1];
-                data += "\t";
-            }
-            data += DateTime.Now.ToString();
-            sw.WriteLine(data.Substring(0, data.Length));
-
-            sw.Flush();
-            sw.Close();
         }
     }
 }
