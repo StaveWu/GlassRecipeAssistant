@@ -720,6 +720,5 @@ namespace RecipeAssistant
                 }
             }
         }
-
     }
 }
