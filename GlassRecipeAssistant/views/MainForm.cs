@@ -331,12 +331,21 @@ namespace RecipeAssistant
 
         private void button1_Click(object sender, EventArgs e)
         {// 完成按钮
-            textBox1.Enabled = true; // 解锁原料质量
             if (checkGlassSelected() && checkRecipeSelected())
             {
-                recordRecipesWeight();
-                weighOut();
-                this.Refresh();
+                DialogResult dialogResult = MessageBox.Show("确定要保存本次称量结果吗？", 
+                    "完成提示", MessageBoxButtons.OKCancel);
+                if (dialogResult == DialogResult.OK)
+                {
+                    textBox1.Enabled = true; // 解锁原料质量
+                    recordRecipesWeight();
+                    weighOut();
+                    this.Refresh();
+                }
+                else if (dialogResult == DialogResult.Cancel)
+                {
+                    // do nothing
+                }
             }
         }
 
@@ -463,26 +472,29 @@ namespace RecipeAssistant
 
         private void button7_Click(object sender, EventArgs e)
         {// 开始称重按钮
-            // 检查原料质量
-            if (!StringUtils.isNumber(textBox1.Text))
+            if (!isWeighIn() || (isWeighIn() 
+                && MessageBox.Show("当前称重还未完成，确定要重新开始称重吗？",
+                    "称重提示", MessageBoxButtons.OKCancel) == DialogResult.OK))
             {
-                MessageBox.Show("请先设置原料质量，并检查原料质量是否输入正确");
-                return;
-            }
-            else
-            {
+                // 检查原料质量
+                if (!StringUtils.isNumber(textBox1.Text))
+                {
+                    MessageBox.Show("请先设置原料质量，并检查原料质量是否输入正确");
+                    return;
+                }
                 textBox1.Enabled = false;
                 Settings.RawMaterialQuality = Convert.ToDouble(textBox1.Text);
                 loadRecipes();
                 refreshRecipeInfoLabels();
-            }
 
-            if (isRecipesEmpty())
-            {
-                MessageBox.Show("配方不存在！");
-                return;
+                if (isRecipesEmpty())
+                {
+                    MessageBox.Show("配方不存在！");
+                    return;
+                }
+
+                weighIn();
             }
-            weighIn();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -562,6 +574,11 @@ namespace RecipeAssistant
         private bool isRecipesEmpty()
         {
             return listBox1.Items.Count <= 0;
+        }
+
+        private bool isWeighIn()
+        {
+            return listBox1.SelectedIndex != -1;
         }
 
         private string getSelectedClientName()

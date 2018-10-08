@@ -31,6 +31,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201810041320", "Setup2
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201810051632", "Setup201810051632\Setup201810051632.vdproj", "{253876CB-1145-495E-845A-83C611932E32}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201810061542", "Setup201810061542\Setup201810061542.vdproj", "{8C2E3AE5-3018-4CF9-9E7A-4DF668352515}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -149,6 +151,12 @@ Global
 		{253876CB-1145-495E-845A-83C611932E32}.Release|Any CPU.ActiveCfg = Release
 		{253876CB-1145-495E-845A-83C611932E32}.Release|x64.ActiveCfg = Release
 		{253876CB-1145-495E-845A-83C611932E32}.Release|x86.ActiveCfg = Release
+		{8C2E3AE5-3018-4CF9-9E7A-4DF668352515}.Debug|Any CPU.ActiveCfg = Debug
+		{8C2E3AE5-3018-4CF9-9E7A-4DF668352515}.Debug|x64.ActiveCfg = Debug
+		{8C2E3AE5-3018-4CF9-9E7A-4DF668352515}.Debug|x86.ActiveCfg = Debug
+		{8C2E3AE5-3018-4CF9-9E7A-4DF668352515}.Release|Any CPU.ActiveCfg = Release
+		{8C2E3AE5-3018-4CF9-9E7A-4DF668352515}.Release|x64.ActiveCfg = Release
+		{8C2E3AE5-3018-4CF9-9E7A-4DF668352515}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

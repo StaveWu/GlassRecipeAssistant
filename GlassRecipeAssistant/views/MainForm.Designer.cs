@@ -84,7 +84,7 @@
             this.comboBox1.Location = new System.Drawing.Point(174, 100);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(356, 43);
+            this.comboBox1.Size = new System.Drawing.Size(590, 43);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -98,7 +98,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1348, 37);
+            this.menuStrip1.Size = new System.Drawing.Size(1582, 37);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -215,7 +215,7 @@
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 37);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1348, 34);
+            this.toolStrip1.Size = new System.Drawing.Size(1582, 34);
             this.toolStrip1.TabIndex = 13;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -240,7 +240,7 @@
             this.groupBox2.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox2.Location = new System.Drawing.Point(12, 76);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(549, 483);
+            this.groupBox2.Size = new System.Drawing.Size(783, 483);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "类别";
@@ -281,7 +281,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(174, 40);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(356, 43);
+            this.comboBox2.Size = new System.Drawing.Size(590, 43);
             this.comboBox2.TabIndex = 0;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
@@ -294,7 +294,7 @@
             this.listBox1.ItemHeight = 57;
             this.listBox1.Location = new System.Drawing.Point(174, 174);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(356, 289);
+            this.listBox1.Size = new System.Drawing.Size(590, 289);
             this.listBox1.TabIndex = 17;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox1_DrawItem);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -312,7 +312,7 @@
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox3.Location = new System.Drawing.Point(567, 76);
+            this.groupBox3.Location = new System.Drawing.Point(801, 76);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(769, 598);
             this.groupBox3.TabIndex = 19;
@@ -428,14 +428,14 @@
             this.toolStripStatusLabel5});
             this.statusStrip1.Location = new System.Drawing.Point(0, 690);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1348, 32);
+            this.statusStrip1.Size = new System.Drawing.Size(1582, 32);
             this.statusStrip1.TabIndex = 12;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(1066, 27);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(1300, 27);
             this.toolStripStatusLabel3.Spring = true;
             // 
             // toolStripStatusLabel4
@@ -467,7 +467,7 @@
             this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 13.91597F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox1.Location = new System.Drawing.Point(12, 565);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(549, 109);
+            this.groupBox1.Size = new System.Drawing.Size(783, 109);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "属性";
@@ -475,9 +475,9 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("微软雅黑", 15.73109F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.Location = new System.Drawing.Point(256, 48);
+            this.textBox1.Location = new System.Drawing.Point(273, 48);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(274, 42);
+            this.textBox1.Size = new System.Drawing.Size(491, 42);
             this.textBox1.TabIndex = 1;
             // 
             // label10
@@ -494,7 +494,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(119F, 119F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1348, 722);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1582, 722);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
