@@ -33,6 +33,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201810051632", "Setup2
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201810061542", "Setup201810061542\Setup201810061542.vdproj", "{8C2E3AE5-3018-4CF9-9E7A-4DF668352515}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup201810082333", "Setup201810082333\Setup201810082333.vdproj", "{6C431642-822B-43BB-A13D-B0381C80377D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +159,12 @@ Global
 		{8C2E3AE5-3018-4CF9-9E7A-4DF668352515}.Release|Any CPU.ActiveCfg = Release
 		{8C2E3AE5-3018-4CF9-9E7A-4DF668352515}.Release|x64.ActiveCfg = Release
 		{8C2E3AE5-3018-4CF9-9E7A-4DF668352515}.Release|x86.ActiveCfg = Release
+		{6C431642-822B-43BB-A13D-B0381C80377D}.Debug|Any CPU.ActiveCfg = Debug
+		{6C431642-822B-43BB-A13D-B0381C80377D}.Debug|x64.ActiveCfg = Debug
+		{6C431642-822B-43BB-A13D-B0381C80377D}.Debug|x86.ActiveCfg = Debug
+		{6C431642-822B-43BB-A13D-B0381C80377D}.Release|Any CPU.ActiveCfg = Release
+		{6C431642-822B-43BB-A13D-B0381C80377D}.Release|x64.ActiveCfg = Release
+		{6C431642-822B-43BB-A13D-B0381C80377D}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -20,7 +20,7 @@ namespace GlassRecipeAssistant.views
             comboBox2.Text = vo.Customer;
             comboBox3.Text = vo.GlassName;
             textBox4.Text = vo.Weight.ToString();
-            comboBox1.SelectedValue = vo.PowderName;
+            comboBox1.SelectedIndex = comboBox1.Items.IndexOf(vo.PowderName);
         }
 
         protected override void handleConfirmRequest()
