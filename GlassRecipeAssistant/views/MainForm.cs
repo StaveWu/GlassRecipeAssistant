@@ -48,6 +48,7 @@ namespace RecipeAssistant
             InitializeComponent();
             loadingBox = new LoadingBox();
             this.adamForm = adamForm;
+            this.MinimizeBox = false; // this is a workaround for skip mininum error
 
             //CheckForIllegalCrossThreadCalls = false; // 防止串口回调报错
 

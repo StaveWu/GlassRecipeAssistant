@@ -20,14 +20,12 @@ namespace GlassRecipeAssistant.views
         public LoadingBox()
         {
             InitializeComponent();
-            Console.WriteLine(Directory.GetCurrentDirectory());
         }
 
         public void AnimateImage()
         {
             if (!currentlyAnimating)
             {
-
                 //Begin the animation only once.
                 ImageAnimator.Animate(animatedImage, new EventHandler(this.OnFrameChanged));
                 currentlyAnimating = true;
