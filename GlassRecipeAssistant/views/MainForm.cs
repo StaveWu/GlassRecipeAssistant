@@ -21,10 +21,8 @@ namespace RecipeAssistant
 {
     public partial class MainForm : Form
     {
-        private LoadingBox loadingBox;
-
         /// <summary>
-        /// 实时质量
+        /// 实时质量, 也就是天平面板上显示的质量
         /// </summary>
         private double realTimeQuality;
 
@@ -34,8 +32,6 @@ namespace RecipeAssistant
         private IPowderModel powderModel;
         private ILogger logger;
 
-        private IRecipeQualityCalculateStrategy recipeQualityStrategy;
-
         /// <summary>
         /// 该变量由listChanged事件决定，原因是为了反转时序；
         /// 原始的SelectedItem的改变发生在listChanged事件之前
@@ -43,12 +39,14 @@ namespace RecipeAssistant
         private ListBoxItemInfo currentSelectedItem;
 
         private Form adamForm;
+        private Form clearZeroForm;
+        private LoadingBox loadingBox;
+
 
         public MainForm(Form adamForm)
         {
             InitializeComponent();
             loadingBox = new LoadingBox();
-
             this.adamForm = adamForm;
 
             //CheckForIllegalCrossThreadCalls = false; // 防止串口回调报错
@@ -58,8 +56,6 @@ namespace RecipeAssistant
             grMapper = new GlassRecipePowderMapper();
             powderModel = new PowderModel();
             logger = new TextLogger();
-
-            recipeQualityStrategy = new ZeroQualityStrategy(realTimeQuality);
 
             // 注册回调
             serialPort.DataReceived += new SerialDataReceivedEventHandler(dataReceived);
@@ -71,10 +67,10 @@ namespace RecipeAssistant
 
             // 状态栏监视定时器
             timer1.Start();
-
             // 质量更新定时器
             timer2.Start();
-
+            // 清零监视定时器
+            timer3.Start();
         }
 
         /// <summary>
@@ -233,23 +229,21 @@ namespace RecipeAssistant
             {
                 return;
             }
+            // 提示清零
+            clearZeroForm = new Form();
+            while (realTimeQuality != 0.0)
+            {
+                DialogResult res = MessageBox.Show(clearZeroForm, "请先清零！", null, 
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (res == DialogResult.Cancel)
+                {
+                    break;
+                }
+            }
 
             timer2.Stop();
-
-            if (itemInfo.CurrentQuality > 0)
-            {// 如果当前被选中的item中有值，则认为是recheck操作，切换recheck计算策略
-                //Console.WriteLine(itemInfo.RecipeName + " recheck " + itemInfo.CurrentQuality);
-                recipeQualityStrategy = new ReCheckQualityStrategy(realTimeQuality, itemInfo.CurrentQuality);
-            }
-            else
-            {// 否则，认为是新的未称重的item，切换为0质量计算策略
-                //Console.WriteLine(itemInfo.RecipeName + " zero " + itemInfo.CurrentQuality);
-                recipeQualityStrategy = new ZeroQualityStrategy(realTimeQuality);
-            }
             refreshRecipeInfoLabels();
-
             currentSelectedItem = itemInfo;
-
             timer2.Start();
         }
 
@@ -270,7 +264,6 @@ namespace RecipeAssistant
             {
                 try
                 {// 从串口中获取并更新实时质量
-                    //string received = serialPort.ReadLine().Trim();
                     string received = serialPort.ReadExisting().Trim();
                     string[] messages = received.Split('\n');
                     foreach (string s in messages)
@@ -420,7 +413,7 @@ namespace RecipeAssistant
             toolStripStatusLabel5.Text = realTimeQuality.ToString() + "g";
             if (currentSelectedItem != null)
             {
-                currentSelectedItem.CurrentQuality = recipeQualityStrategy.getCurrentQuality(realTimeQuality);
+                currentSelectedItem.CurrentQuality = realTimeQuality;
 
                 label3.Text = "" + currentSelectedItem.CurrentQuality + "g";
                 double rate = (double)currentSelectedItem.CurrentQuality / (double)currentSelectedItem.StandardQuality;
@@ -718,6 +711,14 @@ namespace RecipeAssistant
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {// 监视是否清零
+            if (realTimeQuality == 0.0 && clearZeroForm != null)
+            {
+                clearZeroForm.Close();
             }
         }
     }
